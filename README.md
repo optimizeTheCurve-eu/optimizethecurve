@@ -1,2 +1,2 @@
 # optimizethecurve
-SImulator for controlling the COVID-19 epidemic
+Simulator for controlling the COVID-19 epidemic
