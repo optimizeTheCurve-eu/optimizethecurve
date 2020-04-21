@@ -71,38 +71,38 @@
 
     <font face="arial" color="black">
         <div class="wrapper">
-            <button class="accordion">Zielsetzung: Keine Einschränkung, Eindämmung, Abflachung oder Optimierung</button>
+            <button class="accordion">Zielsetzung: Keine KontakteinschrÃ¤nkung, EindÃ¤mmung, Abflachung oder Optimierung</button>
             <div class="panel">
                 <div>
                     <input type="radio" id="strategyDoNothing" name="strategy" value="doNothing" />
-                    <label for="strategyDoNothing">Keine Einschränkung</label>
+                    <label for="strategyDoNothing">Keine KontakteinschrÃ¤nkung</label>
                 </div>
                 <div>
                     <input type="radio" id="strategySuppression" name="strategy" value="suppression" />
-                    <label for="strategySuppression">Eindämmung: Maximale Einschränkung der Kontakte zur Minimierung der Zahl der Neuinfektionen</label>
+                    <label for="strategySuppression">EindÃ¤mmung: Maximale EinschrÃ¤nkung der Kontakte zur Minimierung der Zahl der Neuinfektionen</label>
                 </div>
                 <div>
                     <input type="radio" id="strategySimpleMitigation" name="strategy" value="simpleMitigation" />
-                    <label for="strategySimpleMitigation">Abflachung: Gleichbleibende Einschränkung der Kontakte ohne Überlastung des Gesundheitswesens</label>
+                    <label for="strategySimpleMitigation">Abflachung: Gleichbleibende EinschrÃ¤nkung der Kontakte ohne Ãœberlastung des Gesundheitswesens</label>
                 </div>
                 <div>
                     <input type="radio" id="strategyAdvancedMitigation" name="strategy" value="advancedMitigation" checked="true" />
-                    <label for="strategyAdvancedMitigation">Optimierung: Täglich angepasste Einschränkung der Kontakte ohne Überlastung des Gesundheitswesens</label>
+                    <label for="strategyAdvancedMitigation">Optimierung: TÃ¤glich angepasste, minimale EinschrÃ¤nkung der Kontakte ohne Ãœberlastung des Gesundheitswesens</label>
                 </div>
             </div>
-            <button class="accordion">Berücksichtigung der Risikogruppen</button>
+            <button class="accordion">BerÃ¼cksichtigung der Risikogruppen</button>Spezieller Schutz fÃ¼r die Gruppe mit hohem Intensiv-Risiko
             <div class="panel">
                 <div>
                     <input type="radio" id="optionEntire" name="option" value="entire" />
-                    <label for="optionEntire">Keine besondere Berücksichtigung von Risikogruppen</label>
+                    <label for="optionEntire">Keine besondere BerÃ¼cksichtigung von Risikogruppen</label>
                 </div>
                 <div>
                     <input type="radio" id="optionOnlyLowRisk" name="option" value="onlyLowRisk" />
-                    <label for="optionOnlyLowRisk">Immunisierung durch Gruppen mit niedrigem Intensiv-Risiko</label>
+                    <label for="optionOnlyLowRisk">Spezieller Schutz fÃ¼r die Gruppe mit hohem Intensiv-Risiko</label>
                 </div>
                 <div>
                     <input type="radio" id="optionOnlyLowRiskPlusLockdown" name="option" value="onlyLowRiskPlusLockdown" checked="true" />
-                    <label for="optionOnlyLowRiskPlusLockdown"> <span title="Sobald ausreichend Menschen gegen das Virus immun sind, breitet sich das Virus nicht mehr epidemieartig aus. Da es zu dem Zeitpunkt noch sehr viele Infizierte gibt, besteht für die Risikogruppe weiterhin ein akutes Ansteckungsrisiko. Der 3-wöchige Lockdown führt zu einem schnellen Abklingen der Infektionen.">Immunisierung durch Gruppen mit niedrigem Intensiv-Risiko und anschließender 3-wöchiger Lockdown</span></label>
+                    <label for="optionOnlyLowRiskPlusLockdown"> <span title="Sobald ausreichend Menschen gegen das Virus immun sind, breitet sich das Virus nicht mehr epidemieartig aus. Da es zu dem Zeitpunkt noch sehr viele Infizierte gibt, besteht fÃ¼r die Risikogruppe weiterhin ein akutes Ansteckungsrisiko. Der 3-wÃ¶chige Lockdown fÃ¼hrt zu einem schnellen Abklingen der Infektionen.">Spezieller Schutz fÃ¼r die Gruppe mit hohem Intensiv-Risiko inkl. abschlieÃŸender 3-wÃ¶chiger Lockdown</span></label>
                 </div>
             </div>
 
@@ -111,7 +111,7 @@
                 <div class="rangeslider">
                     <input type="range" min="0" max="100000000" value="83000000" step="100000"
                            class="myslider" id="sliderPopulation">
-                    Die Bevölkerung besteht aus <b><span id="displayPopulation"></span> Menschen</b>.
+                    Die BevÃ¶lkerung besteht aus <b><span id="displayPopulation"></span> Menschen</b>.
                 </div>
                 <div class="rangeslider">
                     <input type="range" min="0" max="100000" value="60000" step="100"
@@ -121,7 +121,7 @@
                 <div class="rangeslider">
                     <input type="range" min="0" max="1" value="0.41" step="0.01"
                            class="myslider" id="sliderTransmissionRate">
-                    Der Ausbreitungsfaktor beträgt <b><span id="displayTransmissionRate"></span></b>.
+                    Der Ausbreitungsfaktor betrÃ¤gt <b><span id="displayTransmissionRate"></span></b>.
                 </div>
                 <div class="rangeslider">
                     <input type="range" min="0" max="100" value="15" step="1"
@@ -131,17 +131,17 @@
                 <div class="rangeslider">
                     <input type="range" min="0" max="100" value="28"
                            class="myslider" id="sliderHighRiskPopulation">
-                    <b><span id="displayHighRiskPopulation"></span>%</b> der Bevölkerung haben ein hohes Intensiv-Risiko.
+                    <b><span id="displayHighRiskPopulation"></span>%</b> der BevÃ¶lkerung haben ein hohes Intensiv-Risiko.
                 </div>
                 <div class="rangeslider">
                     <input type="range" min="0" max="1000" value="992"
                            class="myslider" id="sliderICUPercentageHighRisk">
-                    In der Gruppe mit hohem Intensiv-Risiko sind <b><span id="displayICUPercentageHighRisk"></span>%</b> der bestätigten Infizierten intensiv-pflichtig.
+                    In der Gruppe mit hohem Intensiv-Risiko sind <b><span id="displayICUPercentageHighRisk"></span>%</b> der bestÃ¤tigten Infizierten intensiv-pflichtig.
                 </div>
                 <div class="rangeslider">
                     <input type="range" min="0" max="1000" value="38"
                            class="myslider" id="sliderICUPercentageLowRisk">
-                    In der Gruppe mit niedrigem Intensiv-Risiko sind <b><span id="displayICUPercentageLowRisk"></span>%</b> der bestätigten Infizierten intensiv-pflichtig.
+                    In der Gruppe mit niedrigem Intensiv-Risiko sind <b><span id="displayICUPercentageLowRisk"></span>%</b> der bestÃ¤tigten Infizierten intensiv-pflichtig.
                 </div>
                 <div class="rangeslider">
                     <input type="range" min="0" max="100" value="100"
@@ -161,12 +161,12 @@
                 <div class="rangeslider">
                     <input type="range" min="0" max="20" value="10"
                            class="myslider" id="sliderUncertaintyModelParameters">
-                    Die Parameter für die Ausbreitungsgeschwindigkeit sind bis auf <b><span id="displayUncertaintyModelParameters"></span>%</b> genau bekannt.
+                    Die Parameter fÃ¼r die Ausbreitungsgeschwindigkeit sind bis auf <b><span id="displayUncertaintyModelParameters"></span>%</b> genau bekannt.
                 </div>
                 <div class="rangeslider">
                     <input type="range" min="0" max="20" value="10"
                            class="myslider" id="sliderUncertaintyAntibodyTest">
-                    Die Anzahl der Empfänglichen lässt sich über Antikörpertests bis auf <b><span id="displayUncertaintyAntibodyTest"></span>%</b> genau bestimmen.
+                    Die Anzahl der EmpfÃ¤nglichen lÃ¤sst sich Ã¼ber AntikÃ¶rpertests bis auf <b><span id="displayUncertaintyAntibodyTest"></span>%</b> genau bestimmen.
                 </div>
                 <div class="rangeslider">
                     <input type="range" min="0" max="20" value="10"
@@ -175,47 +175,47 @@
                 </div>
             </div>
 
-            <button class="accordion">Kapazität des Gesundheitswesens</button>
+            <button class="accordion">KapazitÃ¤t des Gesundheitswesens</button>
             <div class="panel">
                 <div class="rangeslider">
                     <input type="range" min="0" max="50000" value="20000" step="100"
                            class="myslider" id="sliderCapacity">
-                    Zu Beginn stehen <b><span id="displayCapacity"></span> Intensivbetten</b> für die Behandlung von COVID-19 Patient:Innen zur Verfügung.
+                    Zu Beginn der Simulation stehen <b><span id="displayCapacity"></span> Intensivbetten</b> fÃ¼r die Behandlung von COVID-19 Patient:Innen zur VerfÃ¼gung.
                 </div>
                 <div class="rangeslider">
                     <input type="range" min="0" max="500" value="100" step="10"
                            class="myslider" id="sliderCapacityIncrease">
-                    Täglich werden <b><span id="displayCapacityIncrease"></span> neue Intensivbetten</b> für die Behandlung von COVID-19 Patient:Innen geschaffen.
+                    TÃ¤glich werden <b><span id="displayCapacityIncrease"></span> neue Intensivbetten</b> fÃ¼r die Behandlung von COVID-19 Patient:Innen geschaffen.
                 </div>
             </div>
 
-            <button class="accordion">Kontakteinschränkung (Physical Distancing)</button>
+            <button class="accordion">KontakteinschrÃ¤nkung (Physical Distancing)</button>
             <div class="panel">
                 <div class="rangeslider">
                     <input type="range" min="0" max="100" value="30"
                            class="myslider" id="sliderLowerLevel">
-                    In Phasen hoher Kontaktreduktion finden durchschnittlich noch <b><span id="displayLowerLevel"></span>%</b> der gewöhnlichen Kontakte statt.
+                    In Phasen hoher Kontaktreduktion finden durchschnittlich noch <b><span id="displayLowerLevel"></span>%</b> der gewÃ¶hnlichen Kontakte statt.
                 </div>
 
                 <div class="rangeslider">
                     <input type="range" min="0" max="100" value="100"
                            class="myslider" id="sliderHigherLevel">
-                    In Phasen geringer Kontaktreduktion finden durchschnittlich noch <b><span id="displayHigherLevel"></span>%</b> der gewöhnlichen Kontakte statt.
+                    In Phasen geringer Kontaktreduktion finden durchschnittlich noch <b><span id="displayHigherLevel"></span>%</b> der gewÃ¶hnlichen Kontakte statt.
                 </div>
                 <div class="rangeslider">
                     <input type="range" min="0" max="10" value="5"
                            class="myslider" id="sliderUncertaintyInteraction">
-                    Die täglichen Kontakte weichen um bis zu <b><span id="displayUncertaintyInteraction"></span>%-Punkte</b> von den durchschnittlichen Kontakten ab.
+                    Die tÃ¤glichen Kontakte weichen um bis zu <b><span id="displayUncertaintyInteraction"></span>%-Punkte</b> von den durchschnittlichen Kontakten ab.
                 </div>
                 <div class="rangeslider">
                     <input type="range" min="0" max="730" value="180"
                            class="myslider" id="sliderEndDate">
-                    Nach <b><span id="displayEndDate"></span> Tag(en)</b> dürfen alle uneingeschränkten Kontakt zu anderen Personen aus der Gesamtgruppe haben.
+                    Nach <b><span id="displayEndDate"></span> Tag(en)</b> dÃ¼rfen alle uneingeschrÃ¤nkten Kontakt zu anderen Personen aus der Gesamtgruppe haben.
                 </div>
                 <div class="rangeslider">
                     <input type="range" min="0" max="100" value="85"
                            class="myslider" id="sliderInteractionAfterEndDate">
-                    Nach Beendigung der Maßnahmen treten durchschnittlich <b><span id="displayInteractionAfterEndDate"></span>%</b> der gewöhnlichen Kontakte auf.
+                    Nach Beendigung der MaÃŸnahmen treten durchschnittlich <b><span id="displayInteractionAfterEndDate"></span>%</b> der gewÃ¶hnlichen Kontakte auf.
                 </div>
             </div>
 
@@ -224,13 +224,13 @@
                 <div class="rangeslider">
                     <input type="range" min="30" max="730" value="360" step="10"
                            class="myslider" id="sliderDuration">
-                    Es wird der Zeitraum der nächsten <b><span id="displayDuration"></span>Tagen</b> simuliert.
+                    Es wird der Zeitraum der nÃ¤chsten <b><span id="displayDuration"></span>Tagen</b> simuliert.
                 </div>
 
                 <div class="rangeslider">
                     <input type="range" min="10" max="100" value="10"
                            class="myslider" id="sliderSimulations">
-                    Für die Statistik werden <b><span id="displaySimulations"></span> Simulationen</b> durchgeführt.
+                    FÃ¼r die Statistik werden <b><span id="displaySimulations"></span> Simulationen</b> durchgefÃ¼hrt.
                 </div>
             </div>
         </div>
@@ -253,52 +253,52 @@
             </div>
         </div>
 
-        <button class="accordion">Erläuterungen</button>
+        <button class="accordion">ErlÃ¤uterungen</button>
         <div class="panel">
             <p>
                 <div>
-                    <b>Abbildung A:</b> Die Grafik zeigt das Verhältnis zwischen dem voraussichtlichen Bedarf an Intensivbetten (blau) und der Verfügbarkeit (rot).
-                    Der hellblaue Bereich zeigt die Unsicherheit, also mögliche Abweichungen.
-                    Nach oben der größtmögliche und nach unten der minimale Bedarf (statistisches Streuband).
+                    <b>Abbildung A:</b> Die Grafik zeigt das VerhÃ¤ltnis zwischen dem voraussichtlichen Bedarf an Intensivbetten (blau) und der VerfÃ¼gbarkeit (rot).
+                    Der hellblaue Bereich zeigt die Unsicherheit, also mÃ¶gliche Abweichungen.
+                    Nach oben der grÃ¶ÃŸtmÃ¶gliche und nach unten der minimale Bedarf (statistisches Streuband).
                     Die Anzahl der Simulationen bestimmt das statistische Streuband.
-                    Die Form der blauen Linie wird vor allem von dem Maß an sozialen Kontakten bestimmt (siehe Abbildung C).
+                    Die Form der blauen Linie wird vor allem von dem MaÃŸ an sozialen Kontakten bestimmt (siehe Abbildung C).
                 </div>
             </p>
             <p>
                 <div>
-                    <b>Abbildung B:</b> Empfänglich (susceptible) sind nach derzeitigem Wissenstand alle bisher nicht Infizierten (infected) und nicht Genesenen oder Verstorbenen (recovered).
-                    Besonders gekennzeichnet ist zum einen der Zeitpunkt, an dem ausreichend Menschen gegen SARS CoV2 immun sind, so dass es zu keinem epidemischen Ausbruch der Krankheit mehr kommt, also die sogenannte Herdenimmunität erreicht ist.
+                    <b>Abbildung B:</b> EmpfÃ¤nglich (susceptible) sind nach derzeitigem Wissenstand alle bisher nicht Infizierten (infected) und nicht Genesenen oder Verstorbenen (recovered).
+                    Besonders gekennzeichnet ist zum einen der Zeitpunkt, an dem ausreichend Menschen gegen SARS CoV2 immun sind, so dass es zu keinem epidemischen Ausbruch der Krankheit mehr kommt, also die sogenannte HerdenimmunitÃ¤t erreicht ist.
                     Zum anderen der Zeitpunkt, an dem es wieder so wenige Infizierte gibt wie zu Beginn der Simulation.
                 </div>
             </p>
             <p>
                 <div>
-                    <b>Abbildung C:</b> Die Grafik zeigt, wie stark die physischen Kontakte an jedem Tag eingeschränkt werden müssen (gelb) und wie gut dies gelingt (blau).
-                    33% bedeutet, dass ein Drittel der gewöhnlichen Kontakte vermieden werden müssen, als einer von drei.
-                    Die Abweichung zwischen den beiden Kurven zeigt die Unsicherheit in der Umsetzung der erforderlichen Kontaktzahl und lässt sich über einen Parameter einstellen.
+                    <b>Abbildung C:</b> Die Grafik zeigt, wie stark die physischen Kontakte an jedem Tag eingeschrÃ¤nkt werden mÃ¼ssen (gelb) und wie gut dies gelingt (blau).
+                    33% bedeutet, dass ein Drittel der gewÃ¶hnlichen Kontakte vermieden werden mÃ¼ssen, als einer von drei.
+                    Die Abweichung zwischen den beiden Kurven zeigt die Unsicherheit in der Umsetzung der erforderlichen Kontaktzahl und lÃ¤sst sich Ã¼ber einen Parameter einstellen.
                 </div>
             </p>
             <p>
                 <div>
-                    <b>Abbildung D:</b> Wir gehen in Anlehnung an den <a href="https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Situationsberichte/2020-04-12-de.pdf">Lagebericht der RKI vom 12. April 2020</a> davon aus, dass 29% der intensiv-pflichtigen Patienten versterben, solange die Kapazität an Intensivbetten ausreicht. Für Fälle jenseits der Kapazitätsgrenze rechnen wir mit 100%. Zur Einordnung der Anzahl der Verstorbenen seien folgende Vergleichzahlen genannt: In Deutschland sterben jährlich zwischen 800.000 und 900.000 Menschen, die meisten davon an Kreislauferkrankungen und Krebs. Aber auch etwa 72.000 Menschen sterben jährlich an infektiösen Krankheiten und Krankheiten des Atmungssystems (siehe <a href="https://www.rki.de/DE/Content/Gesundheitsmonitoring/Gesundheitsberichterstattung/GBEDownloadsT/sterblichkeit.pdf">Bericht des RKI</a>). Laut einem Bericht der ZEIT sterben jährlich etwa 120.000 Menschen an den Folgen des Rauchens und etwa 74.000 Menschen an den Folgen von Alkoholkonsum oder eine Kombination aus Alkohol- und Tabakkonsum (siehe <a href="https://www.zeit.de/wissen/gesundheit/2015-05/drogenbericht-dhs-drogen-konsum-deutschland">Bericht der ZEIT</a>).
-                    An Selbstmord sterben etwa 10.000 Menschen (siehe <a href="https://www-genesis.destatis.de/genesis/online?sequenz=tabelleErgebnis&selectionname=23211-0002&sachmerkmal=TODUR1&sachschluessel=TODESURS78&startjahr=1980">Bericht des Statistisches Bundesamts</a>) und in Verkehrsunfällen etwa 3.000 (siehe <a href="https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Verkehrsunfaelle/_inhalt.html">Bericht des Statistisches Bundesamts</a>).
+                    <b>Abbildung D:</b> Wir gehen in Anlehnung an den <a href="https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Situationsberichte/2020-04-12-de.pdf">Lagebericht der RKI vom 12. April 2020</a> davon aus, dass 29% der intensiv-pflichtigen Patienten versterben, solange die KapazitÃ¤t an Intensivbetten ausreicht. FÃ¼r FÃ¤lle jenseits der KapazitÃ¤tsgrenze rechnen wir mit 100%. Zur Einordnung der Anzahl der Verstorbenen seien folgende Vergleichzahlen genannt: In Deutschland sterben jÃ¤hrlich zwischen 800.000 und 900.000 Menschen, die meisten davon an Kreislauferkrankungen und Krebs. Aber auch etwa 72.000 Menschen sterben jÃ¤hrlich an infektiÃ¶sen Krankheiten und Krankheiten des Atmungssystems (siehe <a href="https://www.rki.de/DE/Content/Gesundheitsmonitoring/Gesundheitsberichterstattung/GBEDownloadsT/sterblichkeit.pdf">Bericht des RKI</a>). Laut einem Bericht der ZEIT sterben jÃ¤hrlich etwa 120.000 Menschen an den Folgen des Rauchens und etwa 74.000 Menschen an den Folgen von Alkoholkonsum oder eine Kombination aus Alkohol- und Tabakkonsum (siehe <a href="https://www.zeit.de/wissen/gesundheit/2015-05/drogenbericht-dhs-drogen-konsum-deutschland">Bericht der ZEIT</a>).
+                    An Selbstmord sterben etwa 10.000 Menschen (siehe <a href="https://www-genesis.destatis.de/genesis/online?sequenz=tabelleErgebnis&selectionname=23211-0002&sachmerkmal=TODUR1&sachschluessel=TODESURS78&startjahr=1980">Bericht des Statistisches Bundesamts</a>) und in VerkehrsunfÃ¤llen etwa 3.000 (siehe <a href="https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Verkehrsunfaelle/_inhalt.html">Bericht des Statistisches Bundesamts</a>).
                 </div>
             </p>
         </div>
 
         <!--
     <div id="curve_chart_5" style="width: 100%; height: 500px"></div>
-    Für die Berechnung der Auswirkung auf die Wirtschaft gehen wir von einem Schaden von 5 Mrd. € für einen Tag Kontaktreduktion um 80% (Lockdown) aus.
-    Diese Zahl basiert auf den Schätzungen des ifo Instituts für den Schaden eines 1-monatigen Lockdowns (siehe <a href="https://www.ifo.de/DocDL/Coronavirus-Pandemie-Strategie-Fuest-Lohse-etal-2020-04.pdf">Studie des ifo Instituts</a>) und ist am unteren Ende angesiedelt.
-    Bei einem längeren Lockdown sind aufgrund von Insolvenzen ein deutlich größeren wirtschaftlichen Schaden zu erwarten.
-    Weiter gehen wir davon aus, dass 10% Kontaktreduktion kostenneutral zu erreichen sind. Zwischen den beiden Punkten gehen wir von einer linearen Änderung der Kosten über der Kontaktzahl aus.
+    FÃ¼r die Berechnung der Auswirkung auf die Wirtschaft gehen wir von einem Schaden von 5 Mrd. Â€ fÃ¼r einen Tag Kontaktreduktion um 80% (Lockdown) aus.
+    Diese Zahl basiert auf den SchÃ¤tzungen des ifo Instituts fÃ¼r den Schaden eines 1-monatigen Lockdowns (siehe <a href="https://www.ifo.de/DocDL/Coronavirus-Pandemie-Strategie-Fuest-Lohse-etal-2020-04.pdf">Studie des ifo Instituts</a>) und ist am unteren Ende angesiedelt.
+    Bei einem lÃ¤ngeren Lockdown sind aufgrund von Insolvenzen ein deutlich grÃ¶ÃŸeren wirtschaftlichen Schaden zu erwarten.
+    Weiter gehen wir davon aus, dass 10% Kontaktreduktion kostenneutral zu erreichen sind. Zwischen den beiden Punkten gehen wir von einer linearen Ã„nderung der Kosten Ã¼ber der Kontaktzahl aus.
     -->
         <!--
-    Erläuterung:
+    ErlÃ¤uterung:
     <p>
-        30% Kontakteinschränkung entspricht in etwa den Maßnahmen der Absage von Großeveranstaltungen (z.B. Fußballspiele mit Publikum, Messen) und der Abriegelung besonders betroffener Gebiete.
-        Eine 70%-ige Kontakteinschränkung entspricht den zusätzlichen Maßnahmen der Schließungen von Universitäten, Schulen, Kindergärten, Kitas, Museen, Theatern, Restaurants, Bars, Kneipen, Geschäften (ausgenommen solchen des täglichen Bedarfs) sowie Maßnahmen wie großflächiges Homeoffice und Kontakteinschränkungen auf maximal zwei Personen in der Freizeit.
-        Durch zusätzliche Hygienemaßnahmen wie das Tragen von Mundschutz in öffentlichen Räumen (öffentlichen Nahverkehr, Geschäften, Bildungseinrichtungen, Praxen, etc.) und die Desinfektion der Hände beim Betreten derselben können 70% Kontaktreduktion auch mit weniger massiven Schließungen erreicht werden.
+        30% KontakteinschrÃ¤nkung entspricht in etwa den MaÃŸnahmen der Absage von GroÃŸeveranstaltungen (z.B. FuÃŸballspiele mit Publikum, Messen) und der Abriegelung besonders betroffener Gebiete.
+        Eine 70%-ige KontakteinschrÃ¤nkung entspricht den zusÃ¤tzlichen MaÃŸnahmen der SchlieÃŸungen von UniversitÃ¤ten, Schulen, KindergÃ¤rten, Kitas, Museen, Theatern, Restaurants, Bars, Kneipen, GeschÃ¤ften (ausgenommen solchen des tÃ¤glichen Bedarfs) sowie MaÃŸnahmen wie groÃŸflÃ¤chiges Homeoffice und KontakteinschrÃ¤nkungen auf maximal zwei Personen in der Freizeit.
+        Durch zusÃ¤tzliche HygienemaÃŸnahmen wie das Tragen von Mundschutz in Ã¶ffentlichen RÃ¤umen (Ã¶ffentlichen Nahverkehr, GeschÃ¤ften, Bildungseinrichtungen, Praxen, etc.) und die Desinfektion der HÃ¤nde beim Betreten derselben kÃ¶nnen 70% Kontaktreduktion auch mit weniger massiven SchlieÃŸungen erreicht werden.
     </p>
     -->
 
@@ -749,16 +749,16 @@
 
                 // initialize simulation data
                 simData[0][0] = 'Day';
-                simData[0][1] = 'Empfängliche';
+                simData[0][1] = 'EmpfÃ¤ngliche';
                 simData[0][2] = 'Ansteckende Infizierte';
                 simData[0][3] = 'Genesene/Verstorbene';
                 simData[0][4] = 'Patienten auf Intensivstation';
-                simData[0][5] = 'Umsetzung der Kontakteinschränkung';
-                simData[0][6] = 'Plätze auf Intensivstation';
+                simData[0][5] = 'Umsetzung der KontakteinschrÃ¤nkung';
+                simData[0][6] = 'PlÃ¤tze auf Intensivstation';
                 simData[0][7] = 'min Registered';
                 simData[0][8] = 'max Registered';
-                simData[0][9] = 'Empfängliche niedriges Risiko';
-                simData[0][10] = 'Empfängliche hohes Risiko';
+                simData[0][9] = 'EmpfÃ¤ngliche niedriges Risiko';
+                simData[0][10] = 'EmpfÃ¤ngliche hohes Risiko';
                 simData[0][11] = 'Ansteckende Infizierte niedriges Risiko';
                 simData[0][12] = 'Ansteckende Infizierte hohes Risiko';
                 simData[0][13] = 'Patienten auf Intensivstation niedriges Risiko';
@@ -768,14 +768,14 @@
                 simData[0][17] = "Verstorbene hohes Risiko";
                 simData[0][18] = "min Verstorbene";
                 simData[0][19] = "max Verstorbene";
-                simData[0][20] = "Wirtschaftlicher Schaden [in Mrd. €]";
+                simData[0][20] = "Wirtschaftlicher Schaden [in Mrd. Â€]";
                 simData[0][21] = "min wirtschaftlicher Schaden";
                 simData[0][22] = "max wirtschaftlicher Schaden";
-                simData[0][23] = 'Vorgabe der Kontakteinschränkung';
+                simData[0][23] = 'Vorgabe der KontakteinschrÃ¤nkung';
                 simData[0][24] = 'Registrierte Genesene';
                 simData[0][25] = 'Registrierte Genesene low risk';
                 simData[0][26] = 'Registrierte Genesene high risk';
-                simData[0][27] = 'Empfängliche hohes Risiko nicht kompliant';
+                simData[0][27] = 'EmpfÃ¤ngliche hohes Risiko nicht kompliant';
                 simData[0][28] = 'Ansteckende Infizierte hohes Risiko nicht kompliant';
                 simData[0][29] = 'Patienten auf Intensivstation hohes Risiko nicht kompliant';
                 simData[0][30] = 'Verstorbene hohes Risiko nicht kompliant';
@@ -1161,19 +1161,19 @@
                     data.addColumn({ type: 'string', role: 'annotationText' });
 
                     if (option == 1 || option == 2) {
-                        data.setCell(1, 2, 'Empfägliche (susceptible)', 'Risikogruppe geschützt');
-                        data.setCell(endDate, 2, 'Empfägliche (susceptible)', 'Schutz für Risikogruppe aufgehoben');
+                        data.setCell(1, 2, 'EmpfÃ¤gliche (susceptible)', 'Risikogruppe geschÃ¼tzt');
+                        data.setCell(endDate, 2, 'EmpfÃ¤gliche (susceptible)', 'Schutz fÃ¼r Risikogruppe aufgehoben');
                     }
 
 
-                    if (herdImmunityAlwaysReached) data.setCell(iHerdImmunity, 8, 'Genesene (recovered)', 'Herdenimmunität immer erreicht');
-                    else data.setCell(T - 2, 8, 'Genesene (recovered)', 'Herdenimmunität nicht immer erreicht');
+                    if (herdImmunityAlwaysReached) data.setCell(iHerdImmunity, 8, 'Genesene (recovered)', 'HerdenimmunitÃ¤t immer erreicht');
+                    else data.setCell(T - 2, 8, 'Genesene (recovered)', 'HerdenimmunitÃ¤t nicht immer erreicht');
 
                     if (startLevelAlwaysReached) data.setCell(iStartLevelReached, 5, 'Infizierte (infected)', 'Ansteckungsrisiko immer kleiner als zu Beginn');
                     else data.setCell(T - 2, 5, 'Infizierte (infected)', 'Ansteckungsrisiko nicht immer kleiner als zu Beginn');
 
                     var options = {
-                        title: 'Abbildung B: Immunität und Infizierung in der Bevölkerung',
+                        title: 'Abbildung B: ImmunitÃ¤t und Infizierung in der BevÃ¶lkerung',
                         curveType: 'none',
                         legend: { position: 'bottom' },
                         hAxis: {
@@ -1198,7 +1198,7 @@
 
                     var data2 = google.visualization.arrayToDataTable(viewData2);
                     var options2 = {
-                        title: 'Abbildung A: Kapazitäten im Gesundheitswesen',
+                        title: 'Abbildung A: KapazitÃ¤ten im Gesundheitswesen',
                         curveType: 'none',
                         legend: { position: 'bottom' },
                         vAxes: {
@@ -1229,7 +1229,7 @@
 
                     var data3 = google.visualization.arrayToDataTable(viewData3);
                     var options3 = {
-                        title: 'Abbildung C: Kontakteinschränkungen',
+                        title: 'Abbildung C: KontakteinschrÃ¤nkungen',
                         curveType: 'none',
                         legend: { position: 'bottom' },
                         hAxis: {
