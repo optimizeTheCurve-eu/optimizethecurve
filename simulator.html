@@ -1,255 +1,268 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="simulator.css"/>
+    <link rel="stylesheet" type="text/css" href="simulator.css" />
     <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
     <script type="text/javascript" src="simulatorBackend.js"></script>
 </head>
 
 <body>
-    <font face="arial" color="black">
-        <div align="right" style="margin-bottom:2px">
-            <form align="right">
+    <div align="right" style="margin-bottom:2px">
+        <form align="right">
+            <label>
+                <select id="languageSelection">
+                    <option>English</option>
+                    <option selected>German</option>
+                </select>
                 <label>
-                    <select id="languageSelection">
-                        <option>English</option>
-                        <option selected>German</option>
+                    <select id="audienceSelection">
+                        <option>Simplified</option>
+                        <option selected>Normal</option>
+                        <option>Scientific</option>
                     </select>
                 </label>
-                <!--<button type="button" id="exportData">Export</button>-->
-            </form>
+                <button type="button" id="exportData">Export</button>
+            </label>
+        </form>
+    </div>
+
+    <button class="accordion" id="targetDefinition">Zielsetzung: Keine Kontakteinschränkung, Eindämmung, Abflachung oder Optimierung</button>
+    <div class="panel">
+        <div>
+            <input type="radio" id="strategyDoNothing" name="strategy" value="doNothing" checked />
+            <label for="strategyDoNothing" id="labelStrategyDoNothing">Keine Kontakteinschränkung</label>
         </div>
-        <div class="wrapper">
-            <button class="accordion" id="targetDefinition">Zielsetzung: Keine Kontakteinschränkung, Eindämmung, Abflachung oder Optimierung</button>
-            <div class="panel">
-                <div>
-                    <input type="radio" id="strategyDoNothing" name="strategy" value="doNothing" checked />
-                    <label for="strategyDoNothing" id="labelStrategyDoNothing">Keine Kontakteinschränkung</label>
-                </div>
-                <div>
-                    <input type="radio" id="strategySuppression" name="strategy" value="suppression" />
-                    <label for="strategySuppression" id="labelStrategySuppression"><span title="Ziel dieser Strategie ist, die Zahl der Neuinfektionen auf ein so niedriges Maß zu bringen,dass einzelne Infektionsketten wieder nachverfolgt werden können. Dazu sind viele Tests und ausreichend Kapazität zur Nachverfolgung von Kontaktpersonen notwendig.">Eindämmung: Maximale Einschränkung der Kontakte zur Minimierung der Zahl der Neuinfektionen</span></label>
-                </div>
-                <div>
-                    <input type="radio" id="strategySimpleMitigation" name="strategy" value="simpleMitigation" />
-                    <label for="strategySimpleMitigation" id="labelStrategySimpleMitigation">Abflachung: Gleichbleibende Einschränkung der Kontakte ohne Überlastung des Gesundheitswesens</label>
-                </div>
-                <div>
-                    <input type="radio" id="strategyAdvancedMitigation" name="strategy" value="advancedMitigation" />
-                    <label for="strategyAdvancedMitigation" id="labelStrategyAdvancedMitigation">Optimierung: Täglich angepasste, minimale Einschränkung der Kontakte ohne Überlastung des Gesundheitswesens</label>
-                </div>
-                <div>
-                    <input type="radio" id="strategyInfectionRate" name="strategy" value="infectionRate" />
-                    <label for="strategyInfectionRate" id="labelStrategyInfectionRate">Aktuelle Strategie: Lockdown bei Neuinfektionszahlen größer 50 je 100.000 Menschen je Woche</label>
-                </div>
+        <div>
+            <input type="radio" id="strategySuppression" name="strategy" value="suppression" />
+            <label for="strategySuppression" id="labelStrategySuppression"><span title="Ziel dieser Strategie ist, die Zahl der Neuinfektionen auf ein so niedriges Maß zu bringen, dass einzelne Infektionsketten wieder nachverfolgt werden können. Dazu sind viele Tests und ausreichend Kapazität zur Nachverfolgung von Kontaktpersonen notwendig.">Eindämmung: Maximale Einschränkung der Kontakte zur Minimierung der Zahl der Neuinfektionen</span></label>
+        </div>
+        <div>
+            <input type="radio" id="strategySimpleMitigation" name="strategy" value="simpleMitigation" />
+            <label for="strategySimpleMitigation" id="labelStrategySimpleMitigation">Abflachung: Gleichbleibende Einschränkung der Kontakte ohne Überlastung des Gesundheitswesens</label>
+        </div>
+        <div>
+            <input type="radio" id="strategyAdvancedMitigation" name="strategy" value="advancedMitigation" />
+            <label for="strategyAdvancedMitigation" id="labelStrategyAdvancedMitigation">Optimierung: Täglich angepasste, minimale Einschränkung der Kontakte ohne Überlastung des Gesundheitswesens</label>
+        </div>
+        <div>
+            <input type="radio" id="strategyInfectionRate" name="strategy" value="infectionRate" />
+            <label for="strategyInfectionRate" id="labelStrategyInfectionRate">Aktuelle Strategie: Lockdown bei Neuinfektionszahlen größer 50 je 100.000 Menschen je Woche</label>
+        </div>
+    </div>
+    <button class="accordion" id="labelCosiderationRiskGroup">Berücksichtigung der Risikogruppen</button>
+    <div class="panel">
+        <div>
+            <input type="radio" id="optionEntire" name="option" value="entire" checked />
+            <label id="labelOptionEntire" for="optionEntire">Keine besondere Berücksichtigung von Risikogruppen</label>
+        </div>
+        <div>
+            <input type="radio" id="optionOnlyLowRisk" name="option" value="onlyLowRisk" />
+            <label id="labelOptionOnlyLowRisk" for="optionOnlyLowRisk">Spezieller Schutz für die Gruppe mit hohem Intensiv-Risiko</label>
+        </div>
+        <div>
+            <input type="radio" id="optionOnlyLowRiskPlusLockdown" name="option" value="onlyLowRiskPlusLockdown" />
+            <label id="labelOptionOnlyLowRiskPlusLockdown" for="optionOnlyLowRiskPlusLockdown"> <span title="Sobald ausreichend Menschen gegen das Virus immun sind, breitet sich das Virus nicht mehr epidemieartig aus. Da es zu dem Zeitpunkt noch sehr viele Infizierte gibt, besteht für die Risikogruppe weiterhin ein akutes Ansteckungsrisiko. Der 3-wöchige Lockdown führt zu einem schnellen Abklingen der Infektionen.">Spezieller Schutz für die Gruppe mit hohem Intensiv-Risiko inkl. abschließender 3-wöchiger Lockdown</span></label>
+        </div>
+    </div>
+
+    <button class="accordion">Modellierungsparameter</button>
+    <div class="panel">
+        <div class="rangeslider">
+            <input type="range" min="0" max="10000000000" value="83000000" step="10000"
+                   class="slider" id="sliderPopulation">
+            <input type="number" size="14" id="inputPopulation" min="0" max="10000000000" lang="de-de" step="10000" style="text-align: center" />
+            Die Bevölkerung besteht aus <b><span type="number" id="displayPopulation"></span> Menschen</b>.
+        </div>
+        <div class="rangeslider">
+            <input type="range" min="0" max="100000" value="60000" step="100"
+                   class="slider" id="sliderInitiallyInfected">
+            <input type="number" size="14" id="inputInitiallyInfected" min="0" max="10000000000" step="100" style="text-align: center" />
+            Zu Beginn sind <b><span id="displayInitiallyInfected"></span> Menschen</b> als ansteckend registriert.
+        </div>
+        <div class="rangeslider">
+            <input type="range" min="0" max="1" value="0.41" step="0.01"
+                   class="slider" id="sliderTransmissionRate">
+            <input type="number" size="14" id="inputTransmissionRate" step="0.01" style="text-align: center" min="0" max="10000000" />
+            Der Ausbreitungsfaktor beträgt <b><span id="displayTransmissionRate"></span></b>. Ein Mensch steckt zu Beginn im Schnitt <b><span id="displayR0_1"></span></b> andere an.
+        </div>
+        <div class="rangeslider">
+            <input type="range" min="1" max="100" value="15" step="1"
+                   class="slider" id="sliderRecoveryRate">
+            <input type="number" size="14" id="inputRecoveryRate" min="0" max="10000000000" step="1" style="text-align: center" />
+            Jeden Tag verringert sich die Anzahl der Ansteckenden um <b><span id="displayRecoveryRate"></span>%</b>. Ein Mensch steckt zu Beginn im Schnitt <b><span id="displayR0_2"></span></b> andere an.
+        </div>
+        <div class="rangeslider">
+            <input type="range" min="0" max="100" value="28"
+                   class="slider" id="sliderHighRiskPopulation">
+            <input type="number" size="14" id="inputHighRiskPopulation" min="0" max="10000000000" step="1" style="text-align: center" />
+            <b><span id="displayHighRiskPopulation"></span>%</b> der Bevölkerung haben ein hohes Intensiv-Risiko.
+        </div>
+        <div class="rangeslider">
+            <input type="range" min="0" max="1000" value="992"
+                   class="slider" id="sliderICUPercentageHighRisk">
+            <input type="number" size="14" id="inputICUPercentageHighRisk" min="0" max="10000000" step="0.01" style="text-align: center" />
+            In der Gruppe mit hohem Intensiv-Risiko sind <b><span id="displayICUPercentageHighRisk"></span>%</b> der bestätigten Infizierten intensiv-pflichtig.
+        </div>
+        <div class="rangeslider">
+            <input type="range" min="0" max="1000" value="38"
+                   class="slider" id="sliderICUPercentageLowRisk">
+            <input type="number" size="14" id="inputICUPercentageLowRisk" min="0" max="10000000" step="0.01" style="text-align: center" />
+            In der Gruppe mit niedrigem Intensiv-Risiko sind <b><span id="displayICUPercentageLowRisk"></span>%</b> der bestätigten Infizierten intensiv-pflichtig.
+        </div>
+        <div class="rangeslider">
+            <input type="range" min="0" max="100" value="100"
+                   class="slider" id="sliderRatioHighRiskGroupCompliance">
+            <input type="number" size="14" id="inputRatioHighRiskGroupCompliance" min="0" max="10000000000" step="1" style="text-align: center" />
+            Die Gruppe mit hohem Intensiv-Risiko beteiligt sich zu <b><span id="displayRatioHighRiskGroupCompliance"></span>%</b> an der besonderen Absicherung.
+        </div>
+        <div class="rangeslider">
+            <input type="range" min="1" max="10" value="1"
+                   class="slider" id="sliderFactorUnregistered">
+            <input type="number" size="14" id="inputFactorUnregistered" min="0" max="10000000000" step="1" style="text-align: center" />
+            Von <b><span id="displayFactorUnregistered"></span></b> Infizierten wird eine(r) erkannt und registriert.
+        </div>
+        <div class="rangeslider">
+            <input type="range" min="0" max="30" value="8"
+                   class="slider" id="sliderDelayTime">
+            <input type="number" size="14" id="inputDelayTime" min="0" max="10000000000" step="1" style="text-align: center" />
+            Infizierte werden <b><span id="displayDelayTime"></span> Tag(e)</b> nach der Infektion registriert (Inkubationszeit, Testverzug und Meldeverzug).
+        </div>
+        <div class="rangeslider">
+            <input type="range" min="0" max="20" value="10"
+                   class="slider" id="sliderUncertaintyModelParameters">
+            <input type="number" size="14" id="inputUncertaintyModelParameters" min="0" max="10000000000" step="1" style="text-align: center" />
+            Die Parameter für die Ausbreitungsgeschwindigkeit sind bis auf <b><span id="displayUncertaintyModelParameters"></span>%</b> genau bekannt.
+        </div>
+        <div class="rangeslider">
+            <input type="range" min="0" max="20" value="10"
+                   class="slider" id="sliderUncertaintyAntibodyTest">
+            <input type="number" size="14" id="inputUncertaintyAntibodyTest" min="0" max="10000000000" step="1" style="text-align: center" />
+            Die Anzahl der Empfänglichen lässt sich über Antikörpertests bis auf <b><span id="displayUncertaintyAntibodyTest"></span>%</b> genau bestimmen.
+        </div>
+        <div class="rangeslider">
+            <input type="range" min="0" max="20" value="10"
+                   class="slider" id="sliderUncertaintyRatio">
+            <input type="number" size="14" id="inputUncertaintyRatio" min="0" max="10000000000" step="1" style="text-align: center" />
+            Das Risiko einer Intensivpflicht ist bis auf <b><span id="displayUncertaintyRatio"></span>%</b> genau bekannt.
+        </div>
+    </div>
+
+    <button class="accordion">Kapazität des Gesundheitswesens</button>
+    <div class="panel">
+        <div class="rangeslider">
+            <input type="range" min="0" max="50000" value="20000" step="100"
+                   class="slider" id="sliderCapacity">
+            <input type="number" size="14" id="inputCapacity" min="0" max="10000000000" step="100" style="text-align: center" />
+            Zu Beginn der Simulation stehen <b><span id="displayCapacity"></span> Intensivbetten</b> für die Behandlung von COVID-19 Patient:Innen zur Verfügung.
+        </div>
+        <div class="rangeslider">
+            <input type="range" min="0" max="500" value="100" step="10"
+                   class="slider" id="sliderCapacityIncrease">
+            <input type="number" size="14" id="inputCapacityIncrease" min="0" max="10000000000" step="10" style="text-align: center" />
+            Täglich werden <b><span id="displayCapacityIncrease"></span> neue Intensivbetten</b> für die Behandlung von COVID-19 Patient:Innen geschaffen.
+        </div>
+    </div>
+
+    <button class="accordion">Kontakteinschränkung (Physical Distancing)</button>
+    <div class="panel">
+        <div class="rangeslider">
+            <input type="range" min="0" max="100" value="30"
+                   class="slider" id="sliderLowerLevel">
+            <input type="number" size="14" id="inputLowerLevel" min="0" max="10000000000" step="1" style="text-align: center" />
+            In Phasen hoher Kontaktreduktion finden durchschnittlich noch <b><span id="displayLowerLevel"></span>%</b> der gewöhnlichen Kontakte statt.
+        </div>
+
+        <div class="rangeslider">
+            <input type="range" min="0" max="100" value="100"
+                   class="slider" id="sliderHigherLevel">
+            <input type="number" size="14" id="inputHigherLevel" min="0" max="10000000000" step="1" style="text-align: center" />
+            In Phasen geringer Kontaktreduktion finden durchschnittlich noch <b><span id="displayHigherLevel"></span>%</b> der gewöhnlichen Kontakte statt.
+        </div>
+        <div class="rangeslider">
+            <input type="range" min="0" max="10" value="5"
+                   class="slider" id="sliderUncertaintyInteraction">
+            <input type="number" size="14" id="inputUncertaintyInteraction" min="0" max="10000000000" step="1" style="text-align: center" />
+            Die täglichen Kontakte weichen um bis zu <b><span id="displayUncertaintyInteraction"></span>%-Punkte</b> von den durchschnittlichen Kontakten ab.
+        </div>
+        <div class="rangeslider">
+            <input type="range" min="0" max="730" value="180"
+                   class="slider" id="sliderEndDate">
+            <input type="number" size="14" id="inputEndDate" min="0" max="10000000000" step="1" style="text-align: center" />
+            Nach <b><span id="displayEndDate"></span> Tag(en)</b> dürfen alle uneingeschränkten Kontakt zu anderen Personen aus der Gesamtgruppe haben.
+        </div>
+        <div class="rangeslider">
+            <input type="range" min="0" max="100" value="85"
+                   class="slider" id="sliderInteractionAfterEndDate">
+            <input type="number" size="14" id="inputInteractionAfterEndDate" min="0" max="10000000000" step="1" style="text-align: center" />
+            Nach Beendigung der Maßnahmen treten durchschnittlich <b><span id="displayInteractionAfterEndDate"></span>%</b> der gewöhnlichen Kontakte auf.
+        </div>
+    </div>
+
+    <button class="accordion" id="accordionSimulationParameters">Simulationsparameter</button>
+    <div class="panel" id="panelSimulationParameters">
+        <div class="myRow">
+            <div class="leftcolumn">
+                <input type="range" min="30" max="730" value="360" step="10"
+                       class="slider" id="sliderDuration">
+                <input type="number" size="14" id="inputDuration" min="0" max="720" step="1" />
             </div>
-            <button class="accordion" id="labelCosiderationRiskGroup">Berücksichtigung der Risikogruppen</button>
-            <div class="panel">
-                <div>
-                    <input type="radio" id="optionEntire" name="option" value="entire" checked />
-                    <label id="labelOptionEntire" for="optionEntire">Keine besondere Berücksichtigung von Risikogruppen</label>
-                </div>
-                <div>
-                    <input type="radio" id="optionOnlyLowRisk" name="option" value="onlyLowRisk" />
-                    <label id="labelOptionOnlyLowRisk" for="optionOnlyLowRisk">Spezieller Schutz für die Gruppe mit hohem Intensiv-Risiko</label>
-                </div>
-                <div>
-                    <input type="radio" id="optionOnlyLowRiskPlusLockdown" name="option" value="onlyLowRiskPlusLockdown" />
-                    <label id="labelOptionOnlyLowRiskPlusLockdown" for="optionOnlyLowRiskPlusLockdown"> <span title="Sobald ausreichend Menschen gegen das Virus immun sind, breitet sich das Virus nicht mehr epidemieartig aus. Da es zu dem Zeitpunkt noch sehr viele Infizierte gibt, besteht für die Risikogruppe weiterhin ein akutes Ansteckungsrisiko. Der 3-wöchige Lockdown führt zu einem schnellen Abklingen der Infektionen.">Spezieller Schutz für die Gruppe mit hohem Intensiv-Risiko inkl. abschließender 3-wöchiger Lockdown</span></label>
-                </div>
-            </div>
-
-            <button class="accordion">Modellierungsparameter</button>
-            <div class="panel">
-                <div class="rangeslider">
-                    <input type="range" min="0" max="10000000000" value="83000000" step="10000"
-                           class="slider" id="sliderPopulation">
-                    <input type="number" size="14" id="inputPopulation" min="0" max="10000000000" lang="de-de" step="10000" style="text-align: center" />
-                    Die Bevölkerung besteht aus <b><span type="number" id="displayPopulation"></span> Menschen</b>.
-                </div>
-                <div class="rangeslider">
-                    <input type="range" min="0" max="100000" value="60000" step="100"
-                           class="slider" id="sliderInitiallyInfected">
-                    <input type="number" size="14" id="inputInitiallyInfected" min="0" max="10000000000" step="100" style="text-align: center" />
-                    Zu Beginn sind <b><span id="displayInitiallyInfected"></span> Menschen</b> als ansteckend registriert.
-                </div>
-                <div class="rangeslider">
-                    <input type="range" min="0" max="1" value="0.41" step="0.01"
-                           class="slider" id="sliderTransmissionRate">
-                    <input type="number" size="14" id="inputTransmissionRate" step="0.01" style="text-align: center" min="0" max="10000000" />
-                    Der Ausbreitungsfaktor beträgt <b><span id="displayTransmissionRate"></span></b>. Ein Mensch steckt zu Beginn im Schnitt <b><span id="displayR0_1"></span></b> andere an.
-                </div>
-                <div class="rangeslider">
-                    <input type="range" min="1" max="100" value="15" step="1"
-                           class="slider" id="sliderRecoveryRate">
-                    <input type="number" size="14" id="inputRecoveryRate" min="0" max="10000000000" step="1" style="text-align: center" />
-                    Jeden Tag verringert sich die Anzahl der Ansteckenden um <b><span id="displayRecoveryRate"></span>%</b>. Ein Mensch steckt zu Beginn im Schnitt <b><span id="displayR0_2"></span></b> andere an.
-                </div>
-                <div class="rangeslider">
-                    <input type="range" min="0" max="100" value="28"
-                           class="slider" id="sliderHighRiskPopulation">
-                    <input type="number" size="14" id="inputHighRiskPopulation" min="0" max="10000000000" step="1" style="text-align: center" />
-                    <b><span id="displayHighRiskPopulation"></span>%</b> der Bevölkerung haben ein hohes Intensiv-Risiko.
-                </div>
-                <div class="rangeslider">
-                    <input type="range" min="0" max="1000" value="992"
-                           class="slider" id="sliderICUPercentageHighRisk">
-                    <input type="number" size="14" id="inputICUPercentageHighRisk" min="0" max="10000000" step="0.01" style="text-align: center" />
-                    In der Gruppe mit hohem Intensiv-Risiko sind <b><span id="displayICUPercentageHighRisk"></span>%</b> der bestätigten Infizierten intensiv-pflichtig.
-                </div>
-                <div class="rangeslider">
-                    <input type="range" min="0" max="1000" value="38"
-                           class="slider" id="sliderICUPercentageLowRisk">
-                    <input type="number" size="14" id="inputICUPercentageLowRisk" min="0" max="10000000" step="0.01" style="text-align: center" />
-                    In der Gruppe mit niedrigem Intensiv-Risiko sind <b><span id="displayICUPercentageLowRisk"></span>%</b> der bestätigten Infizierten intensiv-pflichtig.
-                </div>
-                <div class="rangeslider">
-                    <input type="range" min="0" max="100" value="100"
-                           class="slider" id="sliderRatioHighRiskGroupCompliance">
-                    <input type="number" size="14" id="inputRatioHighRiskGroupCompliance" min="0" max="10000000000" step="1" style="text-align: center" />
-                    Die Gruppe mit hohem Intensiv-Risiko beteiligt sich zu <b><span id="displayRatioHighRiskGroupCompliance"></span>%</b> an der besonderen Absicherung.
-                </div>
-                <div class="rangeslider">
-                    <input type="range" min="1" max="10" value="1"
-                           class="slider" id="sliderFactorUnregistered">
-                    <input type="number" size="14" id="inputFactorUnregistered" min="0" max="10000000000" step="1" style="text-align: center" />
-                    Von <b><span id="displayFactorUnregistered"></span></b> Infizierten wird eine(r) erkannt und registriert.
-                </div>
-                <div class="rangeslider">
-                    <input type="range" min="0" max="30" value="8"
-                           class="slider" id="sliderDelayTime">
-                    <input type="number" size="14" id="inputDelayTime" min="0" max="10000000000" step="1" style="text-align: center" />
-                    Infizierte werden <b><span id="displayDelayTime"></span> Tag(e)</b> nach der Infektion registriert (Inkubationszeit, Testverzug und Meldeverzug).
-                </div>
-                <div class="rangeslider">
-                    <input type="range" min="0" max="20" value="10"
-                           class="slider" id="sliderUncertaintyModelParameters">
-                    <input type="number" size="14" id="inputUncertaintyModelParameters" min="0" max="10000000000" step="1" style="text-align: center" />
-                    Die Parameter für die Ausbreitungsgeschwindigkeit sind bis auf <b><span id="displayUncertaintyModelParameters"></span>%</b> genau bekannt.
-                </div>
-                <div class="rangeslider">
-                    <input type="range" min="0" max="20" value="10"
-                           class="slider" id="sliderUncertaintyAntibodyTest">
-                    <input type="number" size="14" id="inputUncertaintyAntibodyTest" min="0" max="10000000000" step="1" style="text-align: center" />
-                    Die Anzahl der Empfänglichen lässt sich über Antikörpertests bis auf <b><span id="displayUncertaintyAntibodyTest"></span>%</b> genau bestimmen.
-                </div>
-                <div class="rangeslider">
-                    <input type="range" min="0" max="20" value="10"
-                           class="slider" id="sliderUncertaintyRatio">
-                    <input type="number" size="14" id="inputUncertaintyRatio" min="0" max="10000000000" step="1" style="text-align: center" />
-                    Das Risiko einer Intensivpflicht ist bis auf <b><span id="displayUncertaintyRatio"></span>%</b> genau bekannt.
-                </div>
-            </div>
-
-            <button class="accordion">Kapazität des Gesundheitswesens</button>
-            <div class="panel">
-                <div class="rangeslider">
-                    <input type="range" min="0" max="50000" value="20000" step="100"
-                           class="slider" id="sliderCapacity">
-                    <input type="number" size="14" id="inputCapacity" min="0" max="10000000000" step="100" style="text-align: center" />
-                    Zu Beginn der Simulation stehen <b><span id="displayCapacity"></span> Intensivbetten</b> für die Behandlung von COVID-19 Patient:Innen zur Verfügung.
-                </div>
-                <div class="rangeslider">
-                    <input type="range" min="0" max="500" value="100" step="10"
-                           class="slider" id="sliderCapacityIncrease">
-                    <input type="number" size="14" id="inputCapacityIncrease" min="0" max="10000000000" step="10" style="text-align: center" />
-                    Täglich werden <b><span id="displayCapacityIncrease"></span> neue Intensivbetten</b> für die Behandlung von COVID-19 Patient:Innen geschaffen.
-                </div>
-            </div>
-
-            <button class="accordion">Kontakteinschränkung (Physical Distancing)</button>
-            <div class="panel">
-                <div class="rangeslider">
-                    <input type="range" min="0" max="100" value="30"
-                           class="slider" id="sliderLowerLevel">
-                    <input type="number" size="14" id="inputLowerLevel" min="0" max="10000000000" step="1" style="text-align: center" />
-                    In Phasen hoher Kontaktreduktion finden durchschnittlich noch <b><span id="displayLowerLevel"></span>%</b> der gewöhnlichen Kontakte statt.
-                </div>
-
-                <div class="rangeslider">
-                    <input type="range" min="0" max="100" value="100"
-                           class="slider" id="sliderHigherLevel">
-                    <input type="number" size="14" id="inputHigherLevel" min="0" max="10000000000" step="1" style="text-align: center" />
-                    In Phasen geringer Kontaktreduktion finden durchschnittlich noch <b><span id="displayHigherLevel"></span>%</b> der gewöhnlichen Kontakte statt.
-                </div>
-                <div class="rangeslider">
-                    <input type="range" min="0" max="10" value="5"
-                           class="slider" id="sliderUncertaintyInteraction">
-                    <input type="number" size="14" id="inputUncertaintyInteraction" min="0" max="10000000000" step="1" style="text-align: center" />
-                    Die täglichen Kontakte weichen um bis zu <b><span id="displayUncertaintyInteraction"></span>%-Punkte</b> von den durchschnittlichen Kontakten ab.
-                </div>
-                <div class="rangeslider">
-                    <input type="range" min="0" max="730" value="180"
-                           class="slider" id="sliderEndDate">
-                    <input type="number" size="14" id="inputEndDate" min="0" max="10000000000" step="1" style="text-align: center" />
-                    Nach <b><span id="displayEndDate"></span> Tag(en)</b> dürfen alle uneingeschränkten Kontakt zu anderen Personen aus der Gesamtgruppe haben.
-                </div>
-                <div class="rangeslider">
-                    <input type="range" min="0" max="100" value="85"
-                           class="slider" id="sliderInteractionAfterEndDate">
-                    <input type="number" size="14" id="inputInteractionAfterEndDate" min="0" max="10000000000" step="1" style="text-align: center" />
-                    Nach Beendigung der Maßnahmen treten durchschnittlich <b><span id="displayInteractionAfterEndDate"></span>%</b> der gewöhnlichen Kontakte auf.
-                </div>
-            </div>
-
-            <button class="accordion">Simulationsparameter</button>
-            <div class="panel">
-                <div class="rangeslider">
-                    <input type="range" min="30" max="730" value="360" step="10"
-                           class="slider" id="sliderDuration">
-                    <input type="number" size="14" id="inputDuration" min="0" max="10000000000" step="1" style="text-align: center" />
-                    Es wird der Zeitraum der nächsten <b><span id="displayDuration"></span>Tagen</b> simuliert.
-                </div>
-
-                <div class="rangeslider">
-                    <input type="range" min="10" max="100" value="10"
-                           class="slider" id="sliderSimulations">
-                    <input type="number" size="14" id="inputSimulations" min="0" max="10000000000" step="1" style="text-align: center" />
-                    Für die Statistik werden <b><span id="displaySimulations"></span> Simulationen</b> durchgeführt.
-                </div>
+            <div class="rightcolumn">
+                Es wird der Zeitraum der nächsten <b><span id="displayDuration"></span>Tagen</b> simuliert.
             </div>
         </div>
 
-        <button class="accordion">Erläuterungen</button>
-        <div class="panel">
-            
-                <div class="comment">
-                    <b>Abbildung A:</b> Die Grafik zeigt das Verhältnis zwischen dem voraussichtlichen Bedarf an Intensivbetten (blau) und der Verfügbarkeit (rot).
-                    Der hellblaue Bereich zeigt die Unsicherheit, also mögliche Abweichungen.
-                    Nach oben der größtmögliche und nach unten der minimale Bedarf (statistisches Streuband).
-                    Die Anzahl der Simulationen bestimmt das statistische Streuband.
-                    Die Form der blauen Linie wird vor allem von dem Maß an sozialen Kontakten bestimmt (siehe Abbildung C).
-                </div>
-            
-            
-                <div class="comment">
-                    <b>Abbildung B:</b> Empfänglich (susceptible) sind nach derzeitigem Wissenstand alle bisher nicht Infizierten (infected) und nicht Genesenen oder Verstorbenen (recovered).
-                    Besonders gekennzeichnet ist zum einen der Zeitpunkt, an dem ausreichend Menschen gegen SARS CoV2 immun sind, so dass es zu keinem epidemischen Ausbruch der Krankheit mehr kommt, also die sogenannte Herdenimmunität erreicht ist.
-                    Zum anderen der Zeitpunkt, an dem es wieder so wenige Infizierte gibt wie zu Beginn der Simulation.
-                </div>
- 
-                <div class="comment">
-                    <b>Abbildung C:</b> Die Grafik zeigt, wie stark die physischen Kontakte an jedem Tag eingeschränkt werden müssen (gelb) und wie gut dies gelingt (blau).
-                    33% bedeutet, dass ein Drittel der gewöhnlichen Kontakte vermieden werden müssen, als einer von drei.
-                    Die Abweichung zwischen den beiden Kurven zeigt die Unsicherheit in der Umsetzung der erforderlichen Kontaktzahl und lässt sich über einen Parameter einstellen.
-                </div>
-   
-                <div class="comment">
-                    <b>Abbildung D:</b> Wir gehen in Anlehnung an den <a href="https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Situationsberichte/2020-04-12-de.pdf">Lagebericht der RKI vom 12. April 2020</a> davon aus, dass 29% der intensiv-pflichtigen Patienten versterben, solange die Kapazität an Intensivbetten ausreicht. Für Fälle jenseits der Kapazitätsgrenze rechnen wir mit 100%. Zur Einordnung der Anzahl der Verstorbenen seien folgende Vergleichzahlen genannt: In Deutschland sterben jährlich zwischen 800.000 und 900.000 Menschen, die meisten davon an Kreislauferkrankungen und Krebs. Aber auch etwa 72.000 Menschen sterben jährlich an infektiösen Krankheiten und Krankheiten des Atmungssystems (siehe <a href="https://www.rki.de/DE/Content/Gesundheitsmonitoring/Gesundheitsberichterstattung/GBEDownloadsT/sterblichkeit.pdf">Bericht des RKI</a>). Laut einem Bericht der ZEIT sterben jährlich etwa 120.000 Menschen an den Folgen des Rauchens und etwa 74.000 Menschen an den Folgen von Alkoholkonsum oder eine Kombination aus Alkohol- und Tabakkonsum (siehe <a href="https://www.zeit.de/wissen/gesundheit/2015-05/drogenbericht-dhs-drogen-konsum-deutschland">Bericht der ZEIT</a>).
-                    An Selbstmord sterben etwa 10.000 Menschen (siehe <a href="https://www-genesis.destatis.de/genesis/online?sequenz=tabelleErgebnis&selectionname=23211-0002&sachmerkmal=TODUR1&sachschluessel=TODESURS78&startjahr=1980">Bericht des Statistisches Bundesamts</a>) und in Verkehrsunfällen etwa 3.000 (siehe <a href="https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Verkehrsunfaelle/_inhalt.html">Bericht des Statistisches Bundesamts</a>).
-                </div>
+        <div class="myRow">
+            <div class="leftcolumn">
+                <input type="range" min="10" max="100" value="10"
+                       class="slider" id="sliderSimulations">
+                <input class="inputField" type="number" size="14" id="inputSimulations" min="0" max="100" step="1" />
+            </div>
+            <div class="rightcolumn">
+                Für die Statistik werden <b><span id="displaySimulations"></span> Simulationen</b> durchgeführt.
+            </div>
+        </div>
+    </div>
+
+    <button class="accordion">Erläuterungen</button>
+    <div class="panel">
+
+        <div class="comment">
+            <b>Abbildung A:</b> Die Grafik zeigt das Verhältnis zwischen dem voraussichtlichen Bedarf an Intensivbetten (blau) und der Verfügbarkeit (rot).
+            Der hellblaue Bereich zeigt die Unsicherheit, also mögliche Abweichungen.
+            Nach oben der größtmögliche und nach unten der minimale Bedarf (statistisches Streuband).
+            Die Anzahl der Simulationen bestimmt das statistische Streuband.
+            Die Form der blauen Linie wird vor allem von dem Maß an sozialen Kontakten bestimmt (siehe Abbildung C).
         </div>
 
-        <div class="flexContainer">
-            <div class="flexItem" id="curve_chart_2" ></div>
-            <div class="flexItem" id="curve_chart" ></div>
-        </div>
-        <div class="flexContainer">
-            <div class="flexItem" id="curve_chart_3" style="height: 300px"></div>
-            <div class="flexItem" id="curve_chart_4" style="height: 300px"></div>
+
+        <div class="comment">
+            <b>Abbildung B:</b> Empfänglich (susceptible) sind nach derzeitigem Wissenstand alle bisher nicht Infizierten (infected) und nicht Genesenen oder Verstorbenen (recovered).
+            Besonders gekennzeichnet ist zum einen der Zeitpunkt, an dem ausreichend Menschen gegen SARS CoV2 immun sind, so dass es zu keinem epidemischen Ausbruch der Krankheit mehr kommt, also die sogenannte Herdenimmunität erreicht ist.
+            Zum anderen der Zeitpunkt, an dem es wieder so wenige Infizierte gibt wie zu Beginn der Simulation.
         </div>
 
-        <!--
+        <div class="comment">
+            <b>Abbildung C:</b> Die Grafik zeigt, wie stark die physischen Kontakte an jedem Tag eingeschränkt werden müssen (gelb) und wie gut dies gelingt (blau).
+            33% bedeutet, dass ein Drittel der gewöhnlichen Kontakte vermieden werden müssen, als einer von drei.
+            Die Abweichung zwischen den beiden Kurven zeigt die Unsicherheit in der Umsetzung der erforderlichen Kontaktzahl und lässt sich über einen Parameter einstellen.
+        </div>
+
+        <div class="comment">
+            <b>Abbildung D:</b> Wir gehen in Anlehnung an den <a href="https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Situationsberichte/2020-04-12-de.pdf">Lagebericht der RKI vom 12. April 2020</a> davon aus, dass 29% der intensiv-pflichtigen Patienten versterben, solange die Kapazität an Intensivbetten ausreicht. Für Fälle jenseits der Kapazitätsgrenze rechnen wir mit 100%. Zur Einordnung der Anzahl der Verstorbenen seien folgende Vergleichzahlen genannt: In Deutschland sterben jährlich zwischen 800.000 und 900.000 Menschen, die meisten davon an Kreislauferkrankungen und Krebs. Aber auch etwa 72.000 Menschen sterben jährlich an infektiösen Krankheiten und Krankheiten des Atmungssystems (siehe <a href="https://www.rki.de/DE/Content/Gesundheitsmonitoring/Gesundheitsberichterstattung/GBEDownloadsT/sterblichkeit.pdf">Bericht des RKI</a>). Laut einem Bericht der ZEIT sterben jährlich etwa 120.000 Menschen an den Folgen des Rauchens und etwa 74.000 Menschen an den Folgen von Alkoholkonsum oder eine Kombination aus Alkohol- und Tabakkonsum (siehe <a href="https://www.zeit.de/wissen/gesundheit/2015-05/drogenbericht-dhs-drogen-konsum-deutschland">Bericht der ZEIT</a>).
+            An Selbstmord sterben etwa 10.000 Menschen (siehe <a href="https://www-genesis.destatis.de/genesis/online?sequenz=tabelleErgebnis&selectionname=23211-0002&sachmerkmal=TODUR1&sachschluessel=TODESURS78&startjahr=1980">Bericht des Statistisches Bundesamts</a>) und in Verkehrsunfällen etwa 3.000 (siehe <a href="https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Verkehrsunfaelle/_inhalt.html">Bericht des Statistisches Bundesamts</a>).
+        </div>
+    </div>
+
+    <div class="flexContainer">
+        <div class="flexItem" id="curve_chart_2"></div>
+        <div class="flexItem" id="curve_chart"></div>
+    </div>
+    <div class="flexContainer">
+        <div class="flexItem" id="curve_chart_3" style="height: 300px"></div>
+        <div class="flexItem" id="curve_chart_4" style="height: 300px"></div>
+    </div>
+
+    <!--
                                                                                             Erläuterung:
     <p>
                                                                                                 30% Kontakteinschränkung entspricht in etwa den Maßnahmen der Absage von Großeveranstaltungen (z.B. Fußballspiele mit Publikum, Messen) und der Abriegelung besonders betroffener Gebiete.
@@ -258,911 +271,906 @@
     </p>
                                                                                             -->
 
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        <script type="text/javascript">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
 
-            var alpha = 0.41;//6.8E-9 * 60300000;      // growth factor
-            var beta = 0.15;                    // recovery factor
-            var modelUncertainty = 0.1;         // uncertainty in model parameters (0.1 corresponds to 10%)
-            var ICUcapacity = 20000;            // initial capacity of ICUs
-            var addCapacity = 100;              // capacity in ICUs added every day
-            var uInaccur = 0.05;                // inaccuracy of setting interaction level
-            var darkRatio = 1;                  // factor by which true number of infections differs from registered number
-            var upperLevel = 1.0;               // high level of social interaction (min=0; max=1.0)
-            var lowerLevel = 0.3;               // low level of social interaction (min=0; max=1.0)
-            var finalLevel = 0.85;              // level of interaction after measures have been revoked
-            var numberCycles = 10;              // number of simulation cycles
-            var T = 360;                        // time steps for simulation (number of days)
-            var Npop = 83000000;                // population size
-            var initialInfected = 60000;        // number of invividuals initially infected
-            var portionHighRisk = 0.28          // fraction of the population at high risk
-            var endDate = 180;                  // day at which the restrictions are revoked
-            var strategy = 0;                   // 0: do nothing; 1: suppression; 2: flatten the curve; 3: optimize the curve
-            var option = 0;                     // 0: entire population; 1: low-risk population; 2: including 3-week lockdown
-            var ratioHighRisk = 0.0992;         // ratio of infections leading to ICU requirement for entire population
-            var ratioLowRisk = 0.0038;          // ratio of infections leading to ICU requirement for low risk population
-            var delay = 8;                      // time steps that registration is delayed with respect to infection
-            var R0 = 2.733;                     // basic reproduction number
-            var newInfections;                  // new infections over a week
+        var alpha = 0.41;//6.8E-9 * 60300000;      // growth factor
+        var beta = 0.15;                    // recovery factor
+        var modelUncertainty = 0.1;         // uncertainty in model parameters (0.1 corresponds to 10%)
+        var ICUcapacity = 20000;            // initial capacity of ICUs
+        var addCapacity = 100;              // capacity in ICUs added every day
+        var uInaccur = 0.05;                // inaccuracy of setting interaction level
+        var darkRatio = 1;                  // factor by which true number of infections differs from registered number
+        var upperLevel = 1.0;               // high level of social interaction (min=0; max=1.0)
+        var lowerLevel = 0.3;               // low level of social interaction (min=0; max=1.0)
+        var finalLevel = 0.85;              // level of interaction after measures have been revoked
+        var numberCycles = 10;              // number of simulation cycles
+        var T = 360;                        // time steps for simulation (number of days)
+        var Npop = 83000000;                // population size
+        var initialInfected = 60000;        // number of invividuals initially infected
+        var portionHighRisk = 0.28          // fraction of the population at high risk
+        var endDate = 180;                  // day at which the restrictions are revoked
+        var strategy = 0;                   // 0: do nothing; 1: suppression; 2: flatten the curve; 3: optimize the curve
+        var option = 0;                     // 0: entire population; 1: low-risk population; 2: including 3-week lockdown
+        var ratioHighRisk = 0.0992;         // ratio of infections leading to ICU requirement for entire population
+        var ratioLowRisk = 0.0038;          // ratio of infections leading to ICU requirement for low risk population
+        var delay = 8;                      // time steps that registration is delayed with respect to infection
+        var R0 = 2.733;                     // basic reproduction number
+        var newInfections;                  // new infections over a week
 
-            var accuracyAntibodyTests = 0.1;    // accuracy of the antibody tests
-            var uncertaintyRatios = 0.1;        // uncertainty of the ratioHighRisk and ratioLowRisk
-            var ratioHighRiskCompliance = 1;    // ratio of compliance of high risk group with measures
+        var accuracyAntibodyTests = 0.1;    // accuracy of the antibody tests
+        var uncertaintyRatios = 0.1;        // uncertainty of the ratioHighRisk and ratioLowRisk
+        var ratioHighRiskCompliance = 1;    // ratio of compliance of high risk group with measures
 
-            var language = 1;                   // language: 0: english, 1: german
-            var graphFontSize = 16;
+        var language = 1;                   // language: 0: english, 1: german
+        var graphFontSize = 16;
 
-            var titles = [];
-            var graphAnnotations = [];
-            var seriesLabels = [];
+        var titles = [];
+        var graphAnnotations = [];
+        var seriesLabels = [];
 
-            var simData = [];
+        var simData = [];
 
-            for (i = 0; i < 730 + 1; i++) {
-                simData[i] = [];
+        for (i = 0; i < 730 + 1; i++) {
+            simData[i] = [];
+        }
+
+        for (i = 0; i < 4; i++) {
+            titles[i] = [];
+        }
+        for (i = 0; i < 6; i++) {
+            graphAnnotations[i] = [];
+        }
+        for (i = 0; i < 10; i++) {
+            seriesLabels[i] = [];
+        }
+
+        titles[0][0] = 'Figure A: Capacity of health care system';
+        titles[0][1] = 'Abbildung A: Kapazitäten im Gesundheitswesen';
+
+        titles[1][0] = 'Figure B: Infections and immunity in the population';
+        titles[1][1] = 'Abbildung B: Infizierung und Immunität in der Bevölkerung';
+
+        titles[2][0] = 'Figure C: Contact reduction';
+        titles[2][1] = 'Abbildung C: Kontakteinschränkungen';
+
+        titles[3][0] = 'Figure D: Deceased';
+        titles[3][1] = 'Abbildung D: Verstorbene';
+
+        graphAnnotations[0][0] = 'Risk group separated';
+        graphAnnotations[0][1] = 'Risikogruppe geschützt';
+
+        graphAnnotations[1][0] = 'Risk group integrated';
+        graphAnnotations[1][1] = 'Schutz für Risikogruppe aufgehoben';
+
+        graphAnnotations[2][0] = 'Herd immunity always reached';
+        graphAnnotations[2][1] = 'Herdenimmunität immer erreicht';
+
+        graphAnnotations[3][0] = 'Herd immunity not always reached';
+        graphAnnotations[3][1] = 'Herdenimmunität nicht immer erreicht';
+
+        graphAnnotations[4][0] = 'Always lower risk of infections';
+        graphAnnotations[4][1] = 'Ansteckungsrisiko immer reduziert';
+
+        graphAnnotations[5][0] = 'Not always lower risk of infections';
+        graphAnnotations[5][1] = 'Ansteckungsrisiko nicht immer reduziert';
+
+        seriesLabels[0][0] = 'Time [days]';
+        seriesLabels[0][1] = 'Zeit [Tage]';
+
+        seriesLabels[1][0] = 'Available intensive care units';
+        seriesLabels[1][1] = 'Plätze auf Intensivstation';
+
+        seriesLabels[2][0] = 'Required intensive care units';
+        seriesLabels[2][1] = 'Patienten auf Intensivstation';
+
+        seriesLabels[3][0] = 'Susceptible';
+        seriesLabels[3][1] = 'Empfängliche';
+
+        seriesLabels[4][0] = 'Infectious';
+        seriesLabels[4][1] = 'Ansteckende';
+
+        seriesLabels[5][0] = 'Recovered/Deceased';
+        seriesLabels[5][1] = 'Genesene/Verstorbene';
+
+        seriesLabels[6][0] = 'Effective';
+        seriesLabels[6][1] = 'Umsetzung';
+
+        seriesLabels[7][0] = 'Desired';
+        seriesLabels[7][1] = 'Vorgabe';
+
+        seriesLabels[8][0] = '14-days average';
+        seriesLabels[8][1] = '14-tägiger Durchschnitt';
+
+        seriesLabels[9][0] = 'Deceased';
+        seriesLabels[9][1] = 'Verstorbene';
+
+        var transLabelReference = [];
+        transLabelReference[0] = document.getElementById("targetDefinition");
+        transLabelReference[1] = document.getElementById("labelStrategyDoNothing");
+        transLabelReference[2] = document.getElementById("labelStrategySuppression");
+        transLabelReference[3] = document.getElementById("labelStrategySimpleMitigation");
+        transLabelReference[4] = document.getElementById("labelStrategyAdvancedMitigation");
+        transLabelReference[5] = document.getElementById("labelCosiderationRiskGroup");
+        transLabelReference[6] = document.getElementById("labelOptionEntire");
+        transLabelReference[7] = document.getElementById("labelOptionOnlyLowRisk");
+        transLabelReference[8] = document.getElementById("labelOptionOnlyLowRiskPlusLockdown");
+
+
+
+        var transLabelDescription = [];
+        for (i = 0; i < 12; i++) {
+            transLabelDescription[i] = [];
+        }
+
+        transLabelDescription[0][0] = 'Target: No contact reduction, suppression, mitigation or optimization';
+        transLabelDescription[0][1] = 'Zielsetzung: Keine Kontakteinschränkung, Eindämmung, Abflachung oder Optimierung';
+
+        transLabelDescription[1][0] = 'No contact reduction';
+        transLabelDescription[1][1] = 'Keine Kontakteinschränkung';
+
+        transLabelDescription[2][0] = 'Suppression: Maximum reduction of contact in order to minimize the number of new infections';
+        transLabelDescription[2][1] = 'Eindämmung: Maximale Einschränkung der Kontakte zur Minimierung der Zahl der Neuinfektionen';
+
+        transLabelDescription[3][0] = 'Mitigation: Constant reduction of contacts to prevent an overload of the health care system';
+        transLabelDescription[3][1] = 'Abflachung: Gleichbleibende Einschränkung der Kontakte ohne Überlastung des Gesundheitswesens';
+
+        transLabelDescription[4][0] = 'Optimization: Daily adjusted minimal reduction of contacts without overloading the health care system';
+        transLabelDescription[4][1] = 'Optimierung: Täglich angepasste, minimale Einschränkung der Kontakte ohne Überlastung des Gesundheitswesens';
+
+        transLabelDescription[5][0] = 'Treatment of high risk group';
+        transLabelDescription[5][1] = 'Berücksichtigung der Risikogruppen';
+
+        transLabelDescription[6][0] = 'No special treatment of high risk group';
+        transLabelDescription[6][1] = 'Keine besondere Berücksichtigung der Risikogruppen';
+
+        transLabelDescription[7][0] = 'Special protection of high risk group';
+        transLabelDescription[7][1] = 'Spezieller Schutz für die Gruppe mit hohem Intesiv-Risiko';
+
+        transLabelDescription[8][0] = 'Special protection of high risk group and subsequent 3-week lockdown';
+        transLabelDescription[8][1] = 'Spezieller Schutz für die Gruppe mit hohem Intesiv-Risiko und anschließender 3-wöchiger Lockdown';
+
+        transLabelDescription[9][0] = 'Model parameters';
+        transLabelDescription[9][1] = 'Modellierungsparameter';
+
+        transLabelDescription[10][0] = 'The population consists of';
+        transLabelDescription[10][1] = 'Die Bevölkerung besteht aus';
+
+        transLabelDescription[11][0] = 'people.';
+        transLabelDescription[11][1] = 'Menschen.';
+
+
+        //document.domain = "file:///C:/Users/marco/Documents/JavaScript/";
+
+        var alltext;
+        // read parameter file
+        function loadDoc() {
+            var rawFile = new XMLHttpRequest();
+            rawFile.withCredentials = true;
+            rawFile.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200)
+                    alltext = this.responseText;
             }
+            rawFile.open("GET", "parameters.txt", false);
+            rawFile.send();
+        }
+        loadDoc();
+        console.log(alltext);
+        var inputString = alltext.split("\t");
+        for (i = 0; i < inputString.length; i++)
+            console.log(inputString[i]);
 
-            for (i = 0; i < 4; i++) {
-                titles[i] = [];
+        // create slider elements
+        var newSlider = document.createElement("div");
+        newSlider.className = "rangeslider";
+        var node = document.createElement("input");
+        node.type = "range";
+        node.className = "slider";
+        node.min = parseInt(inputString[3]);
+        node.max = parseInt(inputString[4]);
+        node.value = parseInt(inputString[5]);
+        newSlider.appendChild(node);
+        var element = document.getElementById("panelSimulationParameters");
+        element.append(newSlider);
+
+
+        function translateMenu() {
+            for (i = 0; i < 9; i++) {
+                transLabelReference[i].textContent = transLabelDescription[i][language];
             }
-            for (i = 0; i < 6; i++) {
-                graphAnnotations[i] = [];
-            }
-            for (i = 0; i < 10; i++) {
-                seriesLabels[i] = [];
-            }
+        }
 
-            titles[0][0] = 'Figure A: Capacity of health care system';
-            titles[0][1] = 'Abbildung A: Kapazitäten im Gesundheitswesen';
-
-            titles[1][0] = 'Figure B: Infections and immunity in the population';
-            titles[1][1] = 'Abbildung B: Infizierung und Immunität in der Bevölkerung';
-
-            titles[2][0] = 'Figure C: Contact reduction';
-            titles[2][1] = 'Abbildung C: Kontakteinschränkungen';
-
-            titles[3][0] = 'Figure D: Deceased';
-            titles[3][1] = 'Abbildung D: Verstorbene';
-
-            graphAnnotations[0][0] = 'Risk group separated';
-            graphAnnotations[0][1] = 'Risikogruppe geschützt';
-
-            graphAnnotations[1][0] = 'Risk group integrated';
-            graphAnnotations[1][1] = 'Schutz für Risikogruppe aufgehoben';
-
-            graphAnnotations[2][0] = 'Herd immunity always reached';
-            graphAnnotations[2][1] = 'Herdenimmunität immer erreicht';
-
-            graphAnnotations[3][0] = 'Herd immunity not always reached';
-            graphAnnotations[3][1] = 'Herdenimmunität nicht immer erreicht';
-
-            graphAnnotations[4][0] = 'Always lower risk of infections';
-            graphAnnotations[4][1] = 'Ansteckungsrisiko immer reduziert';
-
-            graphAnnotations[5][0] = 'Not always lower risk of infections';
-            graphAnnotations[5][1] = 'Ansteckungsrisiko nicht immer reduziert';
-
-            seriesLabels[0][0] = 'Time [days]';
-            seriesLabels[0][1] = 'Zeit [Tage]';
-
-            seriesLabels[1][0] = 'Available intensive care units';
-            seriesLabels[1][1] = 'Plätze auf Intensivstation';
-
-            seriesLabels[2][0] = 'Required intensive care units';
-            seriesLabels[2][1] = 'Patienten auf Intensivstation';
-
-            seriesLabels[3][0] = 'Susceptible';
-            seriesLabels[3][1] = 'Empfängliche';
-
-            seriesLabels[4][0] = 'Infectious';
-            seriesLabels[4][1] = 'Ansteckende';
-
-            seriesLabels[5][0] = 'Recovered/Deceased';
-            seriesLabels[5][1] = 'Genesene/Verstorbene';
-
-            seriesLabels[6][0] = 'Effective';
-            seriesLabels[6][1] = 'Umsetzung';
-
-            seriesLabels[7][0] = 'Desired';
-            seriesLabels[7][1] = 'Vorgabe';
-
-            seriesLabels[8][0] = '14-days average';
-            seriesLabels[8][1] = '14-tägiger Durchschnitt';
-
-            seriesLabels[9][0] = 'Deceased';
-            seriesLabels[9][1] = 'Verstorbene';
-
-            var transLabelReference = [];
-            transLabelReference[0] = document.getElementById("targetDefinition");
-            transLabelReference[1] = document.getElementById("labelStrategyDoNothing");
-            transLabelReference[2] = document.getElementById("labelStrategySuppression");
-            transLabelReference[3] = document.getElementById("labelStrategySimpleMitigation");
-            transLabelReference[4] = document.getElementById("labelStrategyAdvancedMitigation");
-            transLabelReference[5] = document.getElementById("labelCosiderationRiskGroup");
-            transLabelReference[6] = document.getElementById("labelOptionEntire");
-            transLabelReference[7] = document.getElementById("labelOptionOnlyLowRisk");
-            transLabelReference[8] = document.getElementById("labelOptionOnlyLowRiskPlusLockdown");
+        this.addEventListener('resize', function () {
+            drawChart();
+        })
 
 
+        // react to change in language setting
+        var languageSel = document.getElementById("languageSelection");
+        languageSel.onchange = function () {
+            language = this.selectedIndex;
+            console.log(language);
+            translateMenu();
+            calculate();
+        }
 
-            var transLabelDescription = [];
-            for (i = 0; i < 12; i++) {
-                transLabelDescription[i] = [];
-            }
+        // react to export data
 
-            transLabelDescription[0][0] = 'Target: No contact reduction, suppression, mitigation or optimization';
-            transLabelDescription[0][1] = 'Zielsetzung: Keine Kontakteinschränkung, Eindämmung, Abflachung oder Optimierung';
-
-            transLabelDescription[1][0] = 'No contact reduction';
-            transLabelDescription[1][1] = 'Keine Kontakteinschränkung';
-
-            transLabelDescription[2][0] = 'Suppression: Maximum reduction of contact in order to minimize the number of new infections';
-            transLabelDescription[2][1] = 'Eindämmung: Maximale Einschränkung der Kontakte zur Minimierung der Zahl der Neuinfektionen';
-
-            transLabelDescription[3][0] = 'Mitigation: Constant reduction of contacts to prevent an overload of the health care system';
-            transLabelDescription[3][1] = 'Abflachung: Gleichbleibende Einschränkung der Kontakte ohne Überlastung des Gesundheitswesens';
-
-            transLabelDescription[4][0] = 'Optimization: Daily adjusted minimal reduction of contacts without overloading the health care system';
-            transLabelDescription[4][1] = 'Optimierung: Täglich angepasste, minimale Einschränkung der Kontakte ohne Überlastung des Gesundheitswesens';
-
-            transLabelDescription[5][0] = 'Treatment of high risk group';
-            transLabelDescription[5][1] = 'Berücksichtigung der Risikogruppen';
-
-            transLabelDescription[6][0] = 'No special treatment of high risk group';
-            transLabelDescription[6][1] = 'Keine besondere Berücksichtigung der Risikogruppen';
-
-            transLabelDescription[7][0] = 'Special protection of high risk group';
-            transLabelDescription[7][1] = 'Spezieller Schutz für die Gruppe mit hohem Intesiv-Risiko';
-
-            transLabelDescription[8][0] = 'Special protection of high risk group and subsequent 3-week lockdown';
-            transLabelDescription[8][1] = 'Spezieller Schutz für die Gruppe mit hohem Intesiv-Risiko und anschließender 3-wöchiger Lockdown';
-
-            transLabelDescription[9][0] = 'Model parameters';
-            transLabelDescription[9][1] = 'Modellierungsparameter';
-
-            transLabelDescription[10][0] = 'The population consists of';
-            transLabelDescription[10][1] = 'Die Bevölkerung besteht aus';
-
-            transLabelDescription[11][0] = 'people.';
-            transLabelDescription[11][1] = 'Menschen.';
-
-
-            function translateMenu() {
-                for (i = 0; i < 9; i++) {
-                    transLabelReference[i].textContent = transLabelDescription[i][language];
-                }
-            }
-
-            var col1 = document.getElementById("col1");
-            var col2 = document.getElementById("col2");
-            var col3 = document.getElementById("col3");
-            var col4 = document.getElementById("col4");
-
-            var chart1 = document.getElementById("curve_chart");
-
-
-            this.addEventListener('resize', function () {
-                /*
-                col1.style.width = '100px';
-                col2.style.width = '200px';
-                col3.style.width = '300px';
-                col4.style.width = '400px';
-                chart1.style.width = '80px';
-                */
-                /*
-                col1.style.width = '100%';
-                col2.style.width = '100%';
-                col3.style.width = '100%';
-                col4.style.width = '100%';
-                chart1.style.width = '50%';
-                col1.style.flex = '0';
-                col1.style.flex = '1';
-                */
-                //location.reload();
-                /*
-                console.log('change');
-                console.log(window.innerWidth)
-                //col1.style.width = (window.innerWidth/2).toString() + 'px';
-                //chart1.style.width = (window.innerWidth/2).toString() + 'px';
-                col1.style.width = '0px';
-                col1.style.flex = '0';
-                col1.style.flex = '1';
-                console.log(col1.style.width)
-                */
-                calculate();
-            })
-
-
-
-
-
-            // react to change in language setting
-            var languageSel = document.getElementById("languageSelection");
-            languageSel.onchange = function () {
-                language = this.selectedIndex;
-                console.log(language);
-                translateMenu();
-                calculate();
-            }
-
-            // react to export data
-            /*
-            var exportDataDocument = document.getElementById("exportData");
-exportDataDocument.onclick = function () {
-                    console.log("Write file");
-                var writeData = [];
-                writeData[0] = "\ufeff";
-for (i = 0; i < T+1; i++) {
-                    writeData[2 * i + 1] = simData[i];
+        var exportDataDocument = document.getElementById("exportData");
+        exportDataDocument.onclick = function () {
+            console.log("Write file");
+            var writeData = [];
+            writeData[0] = "\ufeff";
+            for (i = 0; i < T + 1; i++) {
+                writeData[2 * i + 1] = simData[i];
                 writeData[2 * i + 2] = "\n"
             }
-csv = new Blob(writeData, {type: "text/csv;charset=ISO-8859-1", endings:'native' });
+            csv = new Blob(writeData, { type: "text/csv;charset=ISO-8859-1", endings: 'native' });
 
-                        var link = document.createElement('a');
-                        link.style.display = "";
-                        console.log(csv);
-                        link.setAttribute('href', window.URL.createObjectURL(csv));
-                        console.log(encodeURIComponent(csv));
-                        link.setAttribute('download', 'export.csv');
-                        document.body.append(link);
-                        link.click();
-                        document.body.removeChild(link);
-                    }
-                    */
-
+            var link = document.createElement('a');
+            link.style.display = "";
+            console.log(csv);
+            link.setAttribute('href', window.URL.createObjectURL(csv));
+            console.log(encodeURIComponent(csv));
+            link.setAttribute('download', 'export.csv');
+            document.body.append(link);
+            link.click();
+            document.body.removeChild(link);
+        }
 
 
 
 
-            var accordion = document.getElementsByClassName("accordion");
-            var i;
-
-            for (i = 0; i < accordion.length; i++) {
-                accordion[i].addEventListener("click", function () {
-                    this.classList.toggle("active");
-                    var panel = this.nextElementSibling;
-                    if (panel.style.maxHeight) panel.style.maxHeight = null;
-                    else panel.style.maxHeight = panel.scrollHeight + "px";
-                });
-            }
 
 
+        var accordion = document.getElementsByClassName("accordion");
+        var i;
 
-            // get parameters from user interfacce
-
-            // set parameters for target of no restrictions
-            var radioButtonStrategy = document.getElementById("strategyDoNothing");
-            radioButtonStrategy.onchange = function () {
-                strategy = 0;
-                rangesliderLowerLevel.value = 100;
-                outputLowerLevel.innerHTML = 100;
-                inputLowerLevel.value = 100;
-                lowerLevel = 1;
-                rangesliderHigherLevel.value = 100;
-                outputHigherLevel.innerHTML = 100;
-                inputHigherLevel.value = 100;
-                upperLevel = 1;
-                calculate();
-            }
-
-            // set parameters for target of suppression
-            var radioButtonStrategy = document.getElementById("strategySuppression");
-            radioButtonStrategy.onchange = function () {
-                strategy = 1;
-                rangesliderLowerLevel.value = 30;
-                outputLowerLevel.innerHTML = 30;
-                inputLowerLevel.value = 30;
-                lowerLevel = 0.3;
-                rangesliderHigherLevel.value = 30;
-                outputHigherLevel.innerHTML = 30;
-                inputHigherLevel.value = 30;
-                upperLevel = 0.3;
-                calculate();
-            }
-
-            // set parameters for target of optimization
-            var radioButtonStrategy = document.getElementById("strategySimpleMitigation");
-            radioButtonStrategy.onchange = function () {
-                strategy = 2;
-                if (option == 0) {
-                    rangesliderLowerLevel.value = 37;
-                    outputLowerLevel.innerHTML = 37;
-                    inputLowerLevel.value = 37;
-                    lowerLevel = 0.37;
-                    rangesliderHigherLevel.value = 37;
-                    outputHigherLevel.innerHTML = 37;
-                    inputHigherLevel.value = 37;
-                    upperLevel = 0.37;
-                }
-                else {
-                    rangesliderLowerLevel.value = 43;
-                    outputLowerLevel.innerHTML = 43;
-                    inputLowerLevel.value = 37;
-                    lowerLevel = 0.43;
-                    rangesliderHigherLevel.value = 43;
-                    outputHigherLevel.innerHTML = 43;
-                    inputHigherLevel.value = 37;
-                    upperLevel = 0.43;
-                }
-                calculate();
-            }
-
-            // set parameters for target of optimization
-            var radioButtonStrategy = document.getElementById("strategyAdvancedMitigation");
-            radioButtonStrategy.onchange = function () {
-                strategy = 3;
-                rangesliderLowerLevel.value = 30;
-                outputLowerLevel.innerHTML = 30;
-                inputLowerLevel.value = 30;
-                lowerLevel = 0.3;
-                rangesliderHigherLevel.value = 100;
-                outputHigherLevel.innerHTML = 100;
-                inputHigherLevel.value = 100;
-                upperLevel = 1.0;
-                calculate();
-            }
-
-            // set parameters for target of optimization
-            var radioButtonStrategy = document.getElementById("strategyInfectionRate");
-            radioButtonStrategy.onchange = function () {
-                strategy = 4;
-                rangesliderLowerLevel.value = 30;
-                outputLowerLevel.innerHTML = 30;
-                inputLowerLevel.value = 30;
-                lowerLevel = 0.3;
-                rangesliderHigherLevel.value = 70;
-                outputHigherLevel.innerHTML = 70;
-                inputHigherLevel.value = 70;
-                upperLevel = 0.7;
-                calculate();
-            }
-
-            // set parameters for option 0
-            var radioButtonStrategy = document.getElementById("optionEntire");
-            radioButtonStrategy.onchange = function () {
-                option = 0;
-                if (strategy == 2) {
-                    rangesliderLowerLevel.value = 37;
-                    outputLowerLevel.innerHTML = 37;
-                    inputLowerLevel.value = 37;
-                    lowerLevel = 0.37;
-                    rangesliderHigherLevel.value = 37;
-                    outputHigherLevel.innerHTML = 37;
-                    inputHigherLevel.value = 37;
-                    upperLevel = 0.37;
-                }
-                calculate();
-            }
-
-            // set parameters for option 1
-            var radioButtonStrategy = document.getElementById("optionOnlyLowRisk");
-            radioButtonStrategy.onchange = function () {
-                option = 1;
-                if (strategy == 2) {
-                    rangesliderLowerLevel.value = 43;
-                    outputLowerLevel.innerHTML = 43;
-                    inputLowerLevel.value = 43;
-                    lowerLevel = 0.43;
-                    rangesliderHigherLevel.value = 43;
-                    outputHigherLevel.innerHTML = 43;
-                    inputHigherLevel.value = 43;
-                    upperLevel = 0.43;
-                }
-                calculate();
-            }
-
-            // set parameters for option 2
-            var radioButtonStrategy = document.getElementById("optionOnlyLowRiskPlusLockdown");
-            radioButtonStrategy.onchange = function () {
-                option = 2;
-                if (strategy == 2) {
-                    rangesliderLowerLevel.value = 43;
-                    outputLowerLevel.innerHTML = 43;
-                    inputLowerLevel.value = 43;
-                    lowerLevel = 0.43;
-                    rangesliderHigherLevel.value = 43;
-                    outputHigherLevel.innerHTML = 43;
-                    inputHigherLevel.value = 43;
-                    upperLevel = 0.43;
-                }
-                calculate();
-            }
-
-
-            var rangesliderPopulation = document.getElementById("sliderPopulation");
-            var outputPopulation = document.getElementById("displayPopulation");
-            outputPopulation.innerHTML = Intl.NumberFormat().format(rangesliderPopulation.value);
-            rangesliderPopulation.onchange = function () {
-                outputPopulation.innerHTML = Intl.NumberFormat().format(this.value);
-                inputPopulation.value = this.value;
-                Npop = Math.round(this.value);
-                calculate();
-            }
-            var inputPopulation = document.getElementById("inputPopulation");
-            inputPopulation.value = rangesliderPopulation.value;
-            inputPopulation.onchange = function () {
-                if (this.value < 0) this.value = 0;
-                if (this.value > 10000000000) this.value = 10000000000;
-                outputPopulation.innerHTML = Intl.NumberFormat().format(this.value);
-                rangesliderPopulation.value = this.value;
-                Npop = Math.round(this.value);
-                if (Npop < initialInfected) {
-                    initialInfected = Npop;
-                    inputInitiallyInfected.value = initialInfected;
-                    rangesliderInitiallyInfected.value = initialInfected;
-                    outputInitiallyInfected.innerHTML = Intl.NumberFormat().format(initialInfected);
-                }
-                calculate();
-            }
-
-
-            var rangesliderInitiallyInfected = document.getElementById("sliderInitiallyInfected");
-            var outputInitiallyInfected = document.getElementById("displayInitiallyInfected");
-            outputInitiallyInfected.innerHTML = Intl.NumberFormat().format(rangesliderInitiallyInfected.value);
-            rangesliderInitiallyInfected.onchange = function () {
-                outputInitiallyInfected.innerHTML = Intl.NumberFormat().format(this.value);
-                inputInitiallyInfected.value = this.value;
-                initialInfected = Math.round(this.value);
-                calculate();
-            }
-            var inputInitiallyInfected = document.getElementById("inputInitiallyInfected");
-            inputInitiallyInfected.value = rangesliderInitiallyInfected.value;
-            inputInitiallyInfected.onchange = function () {
-                if (this.value < 0) this.value = 0;
-                if (this.value > Npop) this.value = Npop;
-                outputInitiallyInfected.innerHTML = Intl.NumberFormat().format(this.value);
-                rangesliderInitiallyInfected.value = this.value;
-                initialInfected = Math.round(this.value);
-                calculate();
-            }
-
-
-            var textR0_1 = document.getElementById("displayR0_1");
-            textR0_1.innerHTML = Intl.NumberFormat().format(R0)
-            var textR0_2 = document.getElementById("displayR0_2");
-            textR0_2.innerHTML = Intl.NumberFormat().format(R0)
-
-            var rangesliderTransmissionRate = document.getElementById("sliderTransmissionRate");
-            var outputTransmissionRate = document.getElementById("displayTransmissionRate");
-            outputTransmissionRate.innerHTML = Intl.NumberFormat().format(rangesliderTransmissionRate.value);
-            rangesliderTransmissionRate.onchange = function () {
-                outputTransmissionRate.innerHTML = Intl.NumberFormat().format(this.value);
-                inputTransmissionRate.value = this.value;
-                alpha = this.value;
-                R0 = alpha / beta;
-                textR0_1.innerHTML = Intl.NumberFormat().format(R0);
-                textR0_2.innerHTML = Intl.NumberFormat().format(R0);
-                calculate();
-            }
-            var inputTransmissionRate = document.getElementById("inputTransmissionRate");
-            inputTransmissionRate.value = rangesliderTransmissionRate.value;
-            inputTransmissionRate.onchange = function () {
-                if (this.value < 0) this.value = 0;
-                if (this.value > Npop) this.value = Npop;
-                outputTransmissionRate.innerHTML = Intl.NumberFormat().format(this.value);
-                rangesliderTransmissionRate.value = this.value;
-                alpha = this.value;
-                R0 = alpha / beta;
-                textR0_1.innerHTML = Intl.NumberFormat().format(R0);
-                textR0_2.innerHTML = Intl.NumberFormat().format(R0);
-                calculate();
-            }
-
-
-            var rangesliderRecoveryRate = document.getElementById("sliderRecoveryRate");
-            var outputRecoveryRate = document.getElementById("displayRecoveryRate");
-            outputRecoveryRate.innerHTML = rangesliderRecoveryRate.value;
-            rangesliderRecoveryRate.onchange = function () {
-                outputRecoveryRate.innerHTML = this.value;
-                inputRecoveryRate.value = this.value;
-                beta = this.value / 100;
-                R0 = alpha / beta;
-                textR0_1.innerHTML = Intl.NumberFormat().format(R0)
-                textR0_2.innerHTML = Intl.NumberFormat().format(R0);
-                calculate();
-            }
-            var inputRecoveryRate = document.getElementById("inputRecoveryRate");
-            inputRecoveryRate.value = rangesliderRecoveryRate.value;
-            inputRecoveryRate.onchange = function () {
-                if (this.value < 0) this.value = 0;
-                if (this.value > 100) this.value = 100;
-                outputRecoveryRate.innerHTML = Intl.NumberFormat().format(this.value);
-                rangesliderRecoveryRate.value = this.value;
-                beta = this.value / 100;
-                R0 = alpha / beta;
-                textR0_1.innerHTML = Intl.NumberFormat().format(R0);
-                textR0_2.innerHTML = Intl.NumberFormat().format(R0);
-                calculate();
-            }
-
-
-            var rangesliderHighRiskPopulation = document.getElementById("sliderHighRiskPopulation");
-            var outputHighRiskPopulation = document.getElementById("displayHighRiskPopulation");
-            outputHighRiskPopulation.innerHTML = rangesliderHighRiskPopulation.value;
-            rangesliderHighRiskPopulation.onchange = function () {
-                outputHighRiskPopulation.innerHTML = this.value;
-                inputHighRiskPopulation.value = this.value;
-                portionHighRisk = Math.round(this.value) / 100;
-                calculate();
-            }
-            var inputHighRiskPopulation = document.getElementById("inputHighRiskPopulation");
-            inputHighRiskPopulation.value = rangesliderHighRiskPopulation.value;
-            inputHighRiskPopulation.onchange = function () {
-                if (this.value < 0) this.value = 0;
-                if (this.value > 100) this.value = 100;
-                outputHighRiskPopulation.innerHTML = Intl.NumberFormat().format(this.value);
-                rangesliderHighRiskPopulation.value = this.value;
-                portionHighRisk = Math.round(this.value) / 100;
-                calculate();
-            }
-
-            var rangesliderICUPercentageHighRisk = document.getElementById("sliderICUPercentageHighRisk");
-            var outputICUPercentageHighRisk = document.getElementById("displayICUPercentageHighRisk");
-            outputICUPercentageHighRisk.innerHTML = Intl.NumberFormat().format(rangesliderICUPercentageHighRisk.value / 100);
-            rangesliderICUPercentageHighRisk.onchange = function () {
-                outputICUPercentageHighRisk.innerHTML = Intl.NumberFormat().format(this.value / 100);
-                ratioHighRisk = Math.round(this.value) / 10000;
-                inputICUPercentageHighRisk.value = this.value / 100;
-                calculate();
-            }
-            var inputICUPercentageHighRisk = document.getElementById("inputICUPercentageHighRisk");
-            inputICUPercentageHighRisk.value = rangesliderICUPercentageHighRisk.value / 100;
-            inputICUPercentageHighRisk.onchange = function () {
-                if (this.value < 0) this.value = 0;
-                if (this.value > 10) this.value = 10;
-                outputICUPercentageHighRisk.innerHTML = Intl.NumberFormat().format(this.value);
-                rangesliderICUPercentageHighRisk.value = this.value * 100;
-                ratioHighRisk = Math.round(this.value) / 100;
-                calculate();
-            }
-
-
-            var rangesliderICUPercentageLowRisk = document.getElementById("sliderICUPercentageLowRisk");
-            var outputICUPercentageLowRisk = document.getElementById("displayICUPercentageLowRisk");
-            outputICUPercentageLowRisk.innerHTML = Intl.NumberFormat().format(rangesliderICUPercentageLowRisk.value / 100);
-            rangesliderICUPercentageLowRisk.onchange = function () {
-                outputICUPercentageLowRisk.innerHTML = Intl.NumberFormat().format(this.value / 100);
-                ratioLowRisk = Math.round(this.value) / 10000;
-                inputICUPercentageLowRisk.value = this.value / 100;
-                calculate();
-            }
-            var inputICUPercentageLowRisk = document.getElementById("inputICUPercentageLowRisk");
-            inputICUPercentageLowRisk.value = rangesliderICUPercentageLowRisk.value / 100;
-            inputICUPercentageLowRisk.onchange = function () {
-                if (this.value < 0) this.value = 0;
-                if (this.value > 10) this.value = 10;
-                outputICUPercentageLowRisk.innerHTML = Intl.NumberFormat().format(this.value);
-                rangesliderICUPercentageLowRisk.value = this.value * 100;
-                ratioLowRisk = Math.round(this.value) / 100;
-                calculate();
-            }
-
-            var rangesliderRatioHighRiskGroupCompliance = document.getElementById("sliderRatioHighRiskGroupCompliance");
-            var outputRatioHighRiskGroupCompliance = document.getElementById("displayRatioHighRiskGroupCompliance");
-            outputRatioHighRiskGroupCompliance.innerHTML = rangesliderRatioHighRiskGroupCompliance.value;
-            rangesliderRatioHighRiskGroupCompliance.onchange = function () {
-                outputRatioHighRiskGroupCompliance.innerHTML = this.value;
-                inputRatioHighRiskGroupCompliance.value = this.value;
-                ratioHighRiskCompliance = this.value / 100;
-                console.log(ratioHighRiskCompliance);
-                calculate();
-            }
-            var inputRatioHighRiskGroupCompliance = document.getElementById("inputRatioHighRiskGroupCompliance");
-            inputRatioHighRiskGroupCompliance.value = rangesliderRatioHighRiskGroupCompliance.value;
-            inputRatioHighRiskGroupCompliance.onchange = function () {
-                if (this.value < 0) this.value = 0;
-                if (this.value > 100) this.value = 100;
-                outputRatioHighRiskGroupCompliance.innerHTML = Intl.NumberFormat().format(this.value);
-                rangesliderRatioHighRiskGroupCompliance.value = this.value;
-                ratioHighRiskCompliance = Math.round(this.value) / 100;
-                calculate();
-            }
-
-            var rangesliderFactorUnregistered = document.getElementById("sliderFactorUnregistered");
-            var outputFactorUnregistered = document.getElementById("displayFactorUnregistered");
-            outputFactorUnregistered.innerHTML = rangesliderFactorUnregistered.value;
-            rangesliderFactorUnregistered.onchange = function () {
-                outputFactorUnregistered.innerHTML = this.value;
-                inputFactorUnregistered.value = this.value;
-                darkRatio = this.value;
-                calculate();
-            }
-            var inputFactorUnregistered = document.getElementById("inputFactorUnregistered");
-            inputFactorUnregistered.value = rangesliderFactorUnregistered.value;
-            inputFactorUnregistered.onchange = function () {
-                if (this.value < 0) this.value = 0;
-                if (this.value > 10) this.value = 10;
-                outputFactorUnregistered.innerHTML = Intl.NumberFormat().format(this.value);
-                rangesliderFactorUnregistered.value = this.value;
-                darkRatio = Math.round(this.value);
-                calculate();
-            }
+        for (i = 0; i < accordion.length; i++) {
+            accordion[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) panel.style.maxHeight = null;
+                else panel.style.maxHeight = panel.scrollHeight + "px";
+            });
+        }
 
 
 
-            var rangesliderUncertaintyModelParameters = document.getElementById("sliderUncertaintyModelParameters");
-            var outputUncertaintyModelParameters = document.getElementById("displayUncertaintyModelParameters");
-            outputUncertaintyModelParameters.innerHTML = rangesliderUncertaintyModelParameters.value;
-            rangesliderUncertaintyModelParameters.onchange = function () {
-                outputUncertaintyModelParameters.innerHTML = this.value;
-                inputUncertaintyModelParameters.value = this.value;
-                modelUncertainty = this.value / 100;
-                calculate();
-            }
-            var inputUncertaintyModelParameters = document.getElementById("inputUncertaintyModelParameters");
-            inputUncertaintyModelParameters.value = rangesliderUncertaintyModelParameters.value;
-            inputUncertaintyModelParameters.onchange = function () {
-                if (this.value < 0) this.value = 0;
-                if (this.value > 20) this.value = 20;
-                outputUncertaintyModelParameters.innerHTML = Intl.NumberFormat().format(this.value);
-                rangesliderUncertaintyModelParameters.value = this.value;
-                modelUncertainty = Math.round(this.value) / 100;
-                calculate();
-            }
+        // get parameters from user interfacce
 
-            var rangesliderUncertaintyAntibodyTest = document.getElementById("sliderUncertaintyAntibodyTest");
-            var outputUncertaintyAntibodyTest = document.getElementById("displayUncertaintyAntibodyTest");
-            outputUncertaintyAntibodyTest.innerHTML = rangesliderUncertaintyAntibodyTest.value;
-            rangesliderUncertaintyAntibodyTest.onchange = function () {
-                outputUncertaintyAntibodyTest.innerHTML = this.value;
-                inputUncertaintyAntibodyTest.value = this.value;
-                accuracyAntibodyTests = this.value / 100;
-                calculate();
-            }
-            var inputUncertaintyAntibodyTest = document.getElementById("inputUncertaintyAntibodyTest");
-            inputUncertaintyAntibodyTest.value = rangesliderUncertaintyAntibodyTest.value;
-            inputUncertaintyAntibodyTest.onchange = function () {
-                if (this.value < 0) this.value = 0;
-                if (this.value > 20) this.value = 20;
-                outputUncertaintyAntibodyTest.innerHTML = Intl.NumberFormat().format(this.value);
-                rangesliderUncertaintyAntibodyTest.value = this.value;
-                accuracyAntibodyTests = Math.round(this.value) / 100;
-                calculate();
-            }
-
-            var rangesliderUncertaintyRatio = document.getElementById("sliderUncertaintyRatio");
-            var outputUncertaintyRatio = document.getElementById("displayUncertaintyRatio");
-            outputUncertaintyRatio.innerHTML = rangesliderUncertaintyRatio.value;
-            rangesliderUncertaintyRatio.onchange = function () {
-                outputUncertaintyRatio.innerHTML = this.value;
-                inputUncertaintyRatio.value = this.value;
-                uncertaintyRatios = this.value / 100;
-                calculate();
-            }
-            var inputUncertaintyRatio = document.getElementById("inputUncertaintyRatio");
-            inputUncertaintyRatio.value = rangesliderUncertaintyRatio.value;
-            inputUncertaintyRatio.onchange = function () {
-                if (this.value < 0) this.value = 0;
-                if (this.value > 20) this.value = 20;
-                outputUncertaintyRatio.innerHTML = Intl.NumberFormat().format(this.value);
-                rangesliderUncertaintyRatio.value = this.value;
-                uncertaintyRatios = Math.round(this.value) / 100;
-                calculate();
-            }
-
-            var rangesliderDelayTime = document.getElementById("sliderDelayTime");
-            var outputDelayTime = document.getElementById("displayDelayTime");
-            outputDelayTime.innerHTML = rangesliderDelayTime.value;
-            rangesliderDelayTime.onchange = function () {
-                outputDelayTime.innerHTML = this.value;
-                inputDelayTime.value = this.value;
-                delay = Math.round(this.value);
-                calculate();
-            }
-            var inputDelayTime = document.getElementById("inputDelayTime");
-            inputDelayTime.value = rangesliderDelayTime.value;
-            inputDelayTime.onchange = function () {
-                if (this.value < 0) this.value = 0;
-                if (this.value > 30) this.value = 30;
-                outputDelayTime.innerHTML = Intl.NumberFormat().format(this.value);
-                rangesliderDelayTime.value = this.value;
-                delay = Math.round(this.value);
-                calculate();
-            }
-
-
-            var rangesliderCapacity = document.getElementById("sliderCapacity");
-            var outputCapacity = document.getElementById("displayCapacity");
-            outputCapacity.innerHTML = Intl.NumberFormat().format(rangesliderCapacity.value);
-            rangesliderCapacity.onchange = function () {
-                outputCapacity.innerHTML = Intl.NumberFormat().format(this.value);
-                inputCapacity.value = this.value;
-                ICUcapacity = Math.round(this.value);
-                calculate();
-            }
-            var inputCapacity = document.getElementById("inputCapacity");
-            inputCapacity.value = rangesliderCapacity.value;
-            inputCapacity.onchange = function () {
-                if (this.value < 0) this.value = 0;
-                if (this.value > 50000) this.value = 50000;
-                outputCapacity.innerHTML = Intl.NumberFormat().format(this.value);
-                rangesliderCapacity.value = this.value;
-                ICUcapacity = Math.round(this.value);
-                calculate();
-            }
-
-            var rangesliderCapacityIncrease = document.getElementById("sliderCapacityIncrease");
-            var outputCapacityIncrease = document.getElementById("displayCapacityIncrease");
-            outputCapacityIncrease.innerHTML = rangesliderCapacityIncrease.value;
-            rangesliderCapacityIncrease.onchange = function () {
-                outputCapacityIncrease.innerHTML = this.value;
-                inputCapacityIncrease.value = this.value;
-                addCapacity = this.value;
-                calculate();
-            }
-            var inputCapacityIncrease = document.getElementById("inputCapacityIncrease");
-            inputCapacityIncrease.value = rangesliderCapacityIncrease.value;
-            inputCapacityIncrease.onchange = function () {
-                if (this.value < 0) this.value = 0;
-                if (this.value > 500) this.value = 500;
-                outputCapacityIncrease.innerHTML = Intl.NumberFormat().format(this.value);
-                rangesliderCapacityIncrease.value = this.value;
-                addCapacity = Math.round(this.value);
-                calculate();
-            }
-
-            var rangesliderUncertaintyInteraction = document.getElementById("sliderUncertaintyInteraction");
-            var outputUncertaintyInteraction = document.getElementById("displayUncertaintyInteraction");
-            outputUncertaintyInteraction.innerHTML = rangesliderUncertaintyInteraction.value;
-            rangesliderUncertaintyInteraction.onchange = function () {
-                outputUncertaintyInteraction.innerHTML = this.value;
-                inputUncertaintyInteraction.value = this.value;
-                uInaccur = this.value / 100;
-                calculate();
-            }
-            var inputUncertaintyInteraction = document.getElementById("inputUncertaintyInteraction");
-            inputUncertaintyInteraction.value = rangesliderUncertaintyInteraction.value;
-            inputUncertaintyInteraction.onchange = function () {
-                if (this.value < 0) this.value = 0;
-                if (this.value > 10) this.value = 10;
-                outputUncertaintyInteraction.innerHTML = Intl.NumberFormat().format(this.value);
-                rangesliderUncertaintyInteraction.value = this.value;
-                uInaccur = Math.round(this.value) / 100;
-                calculate();
-            }
-
-
-            var rangesliderLowerLevel = document.getElementById("sliderLowerLevel");
-            var outputLowerLevel = document.getElementById("displayLowerLevel");
-            outputLowerLevel.innerHTML = rangesliderLowerLevel.value;
-            rangesliderLowerLevel.onchange = function () {
-                outputLowerLevel.innerHTML = this.value;
-                inputLowerLevel.value = this.value;
-                lowerLevel = this.value / 100;
-                calculate();
-            }
-            var inputLowerLevel = document.getElementById("inputLowerLevel");
-            inputLowerLevel.value = rangesliderLowerLevel.value;
-            inputLowerLevel.onchange = function () {
-                if (this.value < 0) this.value = 0;
-                if (this.value > 100) this.value = 100;
-                outputLowerLevel.innerHTML = Intl.NumberFormat().format(this.value);
-                rangesliderLowerLevel.value = this.value;
-                lowerLevel = Math.round(this.value) / 100;
-                calculate();
-            }
-
-            var rangesliderHigherLevel = document.getElementById("sliderHigherLevel");
-            var outputHigherLevel = document.getElementById("displayHigherLevel");
-            outputHigherLevel.innerHTML = rangesliderHigherLevel.value;
-            rangesliderHigherLevel.onchange = function () {
-                outputHigherLevel.innerHTML = this.value;
-                inputHigherLevel.value = this.value;
-                upperLevel = this.value / 100;
-                calculate();
-            }
-            var inputHigherLevel = document.getElementById("inputHigherLevel");
-            inputHigherLevel.value = rangesliderHigherLevel.value;
-            inputHigherLevel.onchange = function () {
-                if (this.value < 0) this.value = 0;
-                if (this.value > 100) this.value = 100;
-                outputHigherLevel.innerHTML = Intl.NumberFormat().format(this.value);
-                rangesliderHigherLevel.value = this.value;
-                upperLevel = Math.round(this.value) / 100;
-                calculate();
-            }
-
-            var rangesliderEndDate = document.getElementById("sliderEndDate");
-            var outputEndDate = document.getElementById("displayEndDate");
-            outputEndDate.innerHTML = rangesliderEndDate.value;
-            rangesliderEndDate.onchange = function () {
-                if (this.value > T - 1) this.value = T - 1;
-                outputEndDate.innerHTML = this.value;
-                inputEndDate.value = this.value;
-                endDate = Math.round(this.value);
-                calculate();
-            }
-            var inputEndDate = document.getElementById("inputEndDate");
-            inputEndDate.value = rangesliderEndDate.value;
-            inputEndDate.onchange = function () {
-                if (this.value < 0) this.value = 0;
-                if (this.value > T - 1) this.value = T - 1;
-                outputEndDate.innerHTML = Intl.NumberFormat().format(this.value);
-                rangesliderEndDate.value = this.value;
-                endDate = Math.round(this.value) / 100;
-                calculate();
-            }
-
-            var rangesliderInteractionAfterEndDate = document.getElementById("sliderInteractionAfterEndDate");
-            var outputInteractionAfterEndDate = document.getElementById("displayInteractionAfterEndDate");
-            outputInteractionAfterEndDate.innerHTML = rangesliderInteractionAfterEndDate.value;
-            rangesliderInteractionAfterEndDate.onchange = function () {
-                outputInteractionAfterEndDate.innerHTML = this.value;
-                inputInteractionAfterEndDate.value = this.value;
-                finalLevel = this.value / 100;
-                calculate();
-            }
-            var inputInteractionAfterEndDate = document.getElementById("inputInteractionAfterEndDate");
-            inputInteractionAfterEndDate.value = rangesliderInteractionAfterEndDate.value;
-            inputInteractionAfterEndDate.onchange = function () {
-                if (this.value < 0) this.value = 0;
-                if (this.value > 100) this.value = 100;
-                outputInteractionAfterEndDate.innerHTML = Intl.NumberFormat().format(this.value);
-                rangesliderInteractionAfterEndDate.value = this.value;
-                finalLevel = Math.round(this.value) / 100;
-                calculate();
-            }
-
-            var rangesliderSimulations = document.getElementById("sliderSimulations");
-            var outputSimulations = document.getElementById("displaySimulations");
-            outputSimulations.innerHTML = rangesliderSimulations.value;
-            rangesliderSimulations.onchange = function () {
-                outputSimulations.innerHTML = this.value;
-                inputsliderSimulations.value = this.value;
-                numberCycles = this.value;
-                calculate();
-            }
-            var inputSimulations = document.getElementById("inputSimulations");
-            inputSimulations.value = rangesliderSimulations.value;
-            inputSimulations.onchange = function () {
-                if (this.value < 0) this.value = 0;
-                if (this.value > 100) this.value = 100;
-                outputsliderSimulations.innerHTML = Intl.NumberFormat().format(this.value);
-                rangesliderSimulations.value = this.value;
-                numberCycles = Math.round(this.value);
-                calculate();
-            }
-
-            var rangesliderDuration = document.getElementById("sliderDuration");
-            var outputDuration = document.getElementById("displayDuration");
-            outputDuration.innerHTML = rangesliderDuration.value;
-            rangesliderDuration.onchange = function () {
-                outputDuration.innerHTML = this.value;
-                inputDuration.value = this.value;
-                T = Math.round(this.value);
-                // check an potentiall correct end date
-                if (T - 1 < endDate) {
-
-                    rangesliderEndDate.value = T - 2;
-                    outputEndDate.innerHTML = T - 2;
-                    inputEndDate.value = T - 2;
-                    endDate = T - 2;
-                }
-                calculate();
-            }
-            var inputDuration = document.getElementById("inputDuration");
-            inputDuration.value = rangesliderDuration.value;
-            inputDuration.onchange = function () {
-                if (this.value < 0) this.value = 0;
-                if (this.value > 730) this.value = 730;
-                outputDuration.innerHTML = Intl.NumberFormat().format(this.value);
-                rangesliderDuration.value = this.value;
-                T = Math.round(this.value);
-                // check an potentiall correct end date
-                if (T - 1 < endDate) {
-
-                    rangesliderEndDate.value = T - 2;
-                    outputEndDate.innerHTML = T - 2;
-                    inputEndDate.value = T - 2;
-                    endDate = T - 2;
-                }
-                calculate();
-            }
-
-            // determine results
+        // set parameters for target of no restrictions
+        var radioButtonStrategy = document.getElementById("strategyDoNothing");
+        radioButtonStrategy.onchange = function () {
+            strategy = 0;
+            rangesliderLowerLevel.value = 100;
+            outputLowerLevel.innerHTML = 100;
+            inputLowerLevel.value = 100;
+            lowerLevel = 1;
+            rangesliderHigherLevel.value = 100;
+            outputHigherLevel.innerHTML = 100;
+            inputHigherLevel.value = 100;
+            upperLevel = 1;
             calculate();
+        }
 
-        </script>
-    </font>
+        // set parameters for target of suppression
+        var radioButtonStrategy = document.getElementById("strategySuppression");
+        radioButtonStrategy.onchange = function () {
+            strategy = 1;
+            rangesliderLowerLevel.value = 30;
+            outputLowerLevel.innerHTML = 30;
+            inputLowerLevel.value = 30;
+            lowerLevel = 0.3;
+            rangesliderHigherLevel.value = 30;
+            outputHigherLevel.innerHTML = 30;
+            inputHigherLevel.value = 30;
+            upperLevel = 0.3;
+            calculate();
+        }
+
+        // set parameters for target of optimization
+        var radioButtonStrategy = document.getElementById("strategySimpleMitigation");
+        radioButtonStrategy.onchange = function () {
+            strategy = 2;
+            if (option == 0) {
+                rangesliderLowerLevel.value = 37;
+                outputLowerLevel.innerHTML = 37;
+                inputLowerLevel.value = 37;
+                lowerLevel = 0.37;
+                rangesliderHigherLevel.value = 37;
+                outputHigherLevel.innerHTML = 37;
+                inputHigherLevel.value = 37;
+                upperLevel = 0.37;
+            }
+            else {
+                rangesliderLowerLevel.value = 43;
+                outputLowerLevel.innerHTML = 43;
+                inputLowerLevel.value = 37;
+                lowerLevel = 0.43;
+                rangesliderHigherLevel.value = 43;
+                outputHigherLevel.innerHTML = 43;
+                inputHigherLevel.value = 37;
+                upperLevel = 0.43;
+            }
+            calculate();
+        }
+
+        // set parameters for target of optimization
+        var radioButtonStrategy = document.getElementById("strategyAdvancedMitigation");
+        radioButtonStrategy.onchange = function () {
+            strategy = 3;
+            rangesliderLowerLevel.value = 30;
+            outputLowerLevel.innerHTML = 30;
+            inputLowerLevel.value = 30;
+            lowerLevel = 0.3;
+            rangesliderHigherLevel.value = 100;
+            outputHigherLevel.innerHTML = 100;
+            inputHigherLevel.value = 100;
+            upperLevel = 1.0;
+            calculate();
+        }
+
+        // set parameters for target of optimization
+        var radioButtonStrategy = document.getElementById("strategyInfectionRate");
+        radioButtonStrategy.onchange = function () {
+            strategy = 4;
+            rangesliderLowerLevel.value = 30;
+            outputLowerLevel.innerHTML = 30;
+            inputLowerLevel.value = 30;
+            lowerLevel = 0.3;
+            rangesliderHigherLevel.value = 70;
+            outputHigherLevel.innerHTML = 70;
+            inputHigherLevel.value = 70;
+            upperLevel = 0.7;
+            calculate();
+        }
+
+        // set parameters for option 0
+        var radioButtonStrategy = document.getElementById("optionEntire");
+        radioButtonStrategy.onchange = function () {
+            option = 0;
+            if (strategy == 2) {
+                rangesliderLowerLevel.value = 37;
+                outputLowerLevel.innerHTML = 37;
+                inputLowerLevel.value = 37;
+                lowerLevel = 0.37;
+                rangesliderHigherLevel.value = 37;
+                outputHigherLevel.innerHTML = 37;
+                inputHigherLevel.value = 37;
+                upperLevel = 0.37;
+            }
+            calculate();
+        }
+
+        // set parameters for option 1
+        var radioButtonStrategy = document.getElementById("optionOnlyLowRisk");
+        radioButtonStrategy.onchange = function () {
+            option = 1;
+            if (strategy == 2) {
+                rangesliderLowerLevel.value = 43;
+                outputLowerLevel.innerHTML = 43;
+                inputLowerLevel.value = 43;
+                lowerLevel = 0.43;
+                rangesliderHigherLevel.value = 43;
+                outputHigherLevel.innerHTML = 43;
+                inputHigherLevel.value = 43;
+                upperLevel = 0.43;
+            }
+            calculate();
+        }
+
+        // set parameters for option 2
+        var radioButtonStrategy = document.getElementById("optionOnlyLowRiskPlusLockdown");
+        radioButtonStrategy.onchange = function () {
+            option = 2;
+            if (strategy == 2) {
+                rangesliderLowerLevel.value = 43;
+                outputLowerLevel.innerHTML = 43;
+                inputLowerLevel.value = 43;
+                lowerLevel = 0.43;
+                rangesliderHigherLevel.value = 43;
+                outputHigherLevel.innerHTML = 43;
+                inputHigherLevel.value = 43;
+                upperLevel = 0.43;
+            }
+            calculate();
+        }
+
+
+        var rangesliderPopulation = document.getElementById("sliderPopulation");
+        var outputPopulation = document.getElementById("displayPopulation");
+        outputPopulation.innerHTML = Intl.NumberFormat().format(rangesliderPopulation.value);
+        rangesliderPopulation.onchange = function () {
+            outputPopulation.innerHTML = Intl.NumberFormat().format(this.value);
+            inputPopulation.value = this.value;
+            Npop = Math.round(this.value);
+            calculate();
+        }
+        var inputPopulation = document.getElementById("inputPopulation");
+        inputPopulation.value = rangesliderPopulation.value;
+        inputPopulation.onchange = function () {
+            if (this.value < 0) this.value = 0;
+            if (this.value > 10000000000) this.value = 10000000000;
+            outputPopulation.innerHTML = Intl.NumberFormat().format(this.value);
+            rangesliderPopulation.value = this.value;
+            Npop = Math.round(this.value);
+            if (Npop < initialInfected) {
+                initialInfected = Npop;
+                inputInitiallyInfected.value = initialInfected;
+                rangesliderInitiallyInfected.value = initialInfected;
+                outputInitiallyInfected.innerHTML = Intl.NumberFormat().format(initialInfected);
+            }
+            calculate();
+        }
+
+
+        var rangesliderInitiallyInfected = document.getElementById("sliderInitiallyInfected");
+        var outputInitiallyInfected = document.getElementById("displayInitiallyInfected");
+        outputInitiallyInfected.innerHTML = Intl.NumberFormat().format(rangesliderInitiallyInfected.value);
+        rangesliderInitiallyInfected.onchange = function () {
+            outputInitiallyInfected.innerHTML = Intl.NumberFormat().format(this.value);
+            inputInitiallyInfected.value = this.value;
+            initialInfected = Math.round(this.value);
+            calculate();
+        }
+        var inputInitiallyInfected = document.getElementById("inputInitiallyInfected");
+        inputInitiallyInfected.value = rangesliderInitiallyInfected.value;
+        inputInitiallyInfected.onchange = function () {
+            if (this.value < 0) this.value = 0;
+            if (this.value > Npop) this.value = Npop;
+            outputInitiallyInfected.innerHTML = Intl.NumberFormat().format(this.value);
+            rangesliderInitiallyInfected.value = this.value;
+            initialInfected = Math.round(this.value);
+            calculate();
+        }
+
+
+        var textR0_1 = document.getElementById("displayR0_1");
+        textR0_1.innerHTML = Intl.NumberFormat().format(R0)
+        var textR0_2 = document.getElementById("displayR0_2");
+        textR0_2.innerHTML = Intl.NumberFormat().format(R0)
+
+        var rangesliderTransmissionRate = document.getElementById("sliderTransmissionRate");
+        var outputTransmissionRate = document.getElementById("displayTransmissionRate");
+        outputTransmissionRate.innerHTML = Intl.NumberFormat().format(rangesliderTransmissionRate.value);
+        rangesliderTransmissionRate.onchange = function () {
+            outputTransmissionRate.innerHTML = Intl.NumberFormat().format(this.value);
+            inputTransmissionRate.value = this.value;
+            alpha = this.value;
+            R0 = alpha / beta;
+            textR0_1.innerHTML = Intl.NumberFormat().format(R0);
+            textR0_2.innerHTML = Intl.NumberFormat().format(R0);
+            calculate();
+        }
+        var inputTransmissionRate = document.getElementById("inputTransmissionRate");
+        inputTransmissionRate.value = rangesliderTransmissionRate.value;
+        inputTransmissionRate.onchange = function () {
+            if (this.value < 0) this.value = 0;
+            if (this.value > Npop) this.value = Npop;
+            outputTransmissionRate.innerHTML = Intl.NumberFormat().format(this.value);
+            rangesliderTransmissionRate.value = this.value;
+            alpha = this.value;
+            R0 = alpha / beta;
+            textR0_1.innerHTML = Intl.NumberFormat().format(R0);
+            textR0_2.innerHTML = Intl.NumberFormat().format(R0);
+            calculate();
+        }
+
+
+        var rangesliderRecoveryRate = document.getElementById("sliderRecoveryRate");
+        var outputRecoveryRate = document.getElementById("displayRecoveryRate");
+        outputRecoveryRate.innerHTML = rangesliderRecoveryRate.value;
+        rangesliderRecoveryRate.onchange = function () {
+            outputRecoveryRate.innerHTML = this.value;
+            inputRecoveryRate.value = this.value;
+            beta = this.value / 100;
+            R0 = alpha / beta;
+            textR0_1.innerHTML = Intl.NumberFormat().format(R0)
+            textR0_2.innerHTML = Intl.NumberFormat().format(R0);
+            calculate();
+        }
+        var inputRecoveryRate = document.getElementById("inputRecoveryRate");
+        inputRecoveryRate.value = rangesliderRecoveryRate.value;
+        inputRecoveryRate.onchange = function () {
+            if (this.value < 0) this.value = 0;
+            if (this.value > 100) this.value = 100;
+            outputRecoveryRate.innerHTML = Intl.NumberFormat().format(this.value);
+            rangesliderRecoveryRate.value = this.value;
+            beta = this.value / 100;
+            R0 = alpha / beta;
+            textR0_1.innerHTML = Intl.NumberFormat().format(R0);
+            textR0_2.innerHTML = Intl.NumberFormat().format(R0);
+            calculate();
+        }
+
+
+        var rangesliderHighRiskPopulation = document.getElementById("sliderHighRiskPopulation");
+        var outputHighRiskPopulation = document.getElementById("displayHighRiskPopulation");
+        outputHighRiskPopulation.innerHTML = rangesliderHighRiskPopulation.value;
+        rangesliderHighRiskPopulation.onchange = function () {
+            outputHighRiskPopulation.innerHTML = this.value;
+            inputHighRiskPopulation.value = this.value;
+            portionHighRisk = Math.round(this.value) / 100;
+            calculate();
+        }
+        var inputHighRiskPopulation = document.getElementById("inputHighRiskPopulation");
+        inputHighRiskPopulation.value = rangesliderHighRiskPopulation.value;
+        inputHighRiskPopulation.onchange = function () {
+            if (this.value < 0) this.value = 0;
+            if (this.value > 100) this.value = 100;
+            outputHighRiskPopulation.innerHTML = Intl.NumberFormat().format(this.value);
+            rangesliderHighRiskPopulation.value = this.value;
+            portionHighRisk = Math.round(this.value) / 100;
+            calculate();
+        }
+
+        var rangesliderICUPercentageHighRisk = document.getElementById("sliderICUPercentageHighRisk");
+        var outputICUPercentageHighRisk = document.getElementById("displayICUPercentageHighRisk");
+        outputICUPercentageHighRisk.innerHTML = Intl.NumberFormat().format(rangesliderICUPercentageHighRisk.value / 100);
+        rangesliderICUPercentageHighRisk.onchange = function () {
+            outputICUPercentageHighRisk.innerHTML = Intl.NumberFormat().format(this.value / 100);
+            ratioHighRisk = Math.round(this.value) / 10000;
+            inputICUPercentageHighRisk.value = this.value / 100;
+            calculate();
+        }
+        var inputICUPercentageHighRisk = document.getElementById("inputICUPercentageHighRisk");
+        inputICUPercentageHighRisk.value = rangesliderICUPercentageHighRisk.value / 100;
+        inputICUPercentageHighRisk.onchange = function () {
+            if (this.value < 0) this.value = 0;
+            if (this.value > 10) this.value = 10;
+            outputICUPercentageHighRisk.innerHTML = Intl.NumberFormat().format(this.value);
+            rangesliderICUPercentageHighRisk.value = this.value * 100;
+            ratioHighRisk = Math.round(this.value) / 100;
+            calculate();
+        }
+
+
+        var rangesliderICUPercentageLowRisk = document.getElementById("sliderICUPercentageLowRisk");
+        var outputICUPercentageLowRisk = document.getElementById("displayICUPercentageLowRisk");
+        outputICUPercentageLowRisk.innerHTML = Intl.NumberFormat().format(rangesliderICUPercentageLowRisk.value / 100);
+        rangesliderICUPercentageLowRisk.onchange = function () {
+            outputICUPercentageLowRisk.innerHTML = Intl.NumberFormat().format(this.value / 100);
+            ratioLowRisk = Math.round(this.value) / 10000;
+            inputICUPercentageLowRisk.value = this.value / 100;
+            calculate();
+        }
+        var inputICUPercentageLowRisk = document.getElementById("inputICUPercentageLowRisk");
+        inputICUPercentageLowRisk.value = rangesliderICUPercentageLowRisk.value / 100;
+        inputICUPercentageLowRisk.onchange = function () {
+            if (this.value < 0) this.value = 0;
+            if (this.value > 10) this.value = 10;
+            outputICUPercentageLowRisk.innerHTML = Intl.NumberFormat().format(this.value);
+            rangesliderICUPercentageLowRisk.value = this.value * 100;
+            ratioLowRisk = Math.round(this.value) / 100;
+            calculate();
+        }
+
+        var rangesliderRatioHighRiskGroupCompliance = document.getElementById("sliderRatioHighRiskGroupCompliance");
+        var outputRatioHighRiskGroupCompliance = document.getElementById("displayRatioHighRiskGroupCompliance");
+        outputRatioHighRiskGroupCompliance.innerHTML = rangesliderRatioHighRiskGroupCompliance.value;
+        rangesliderRatioHighRiskGroupCompliance.onchange = function () {
+            outputRatioHighRiskGroupCompliance.innerHTML = this.value;
+            inputRatioHighRiskGroupCompliance.value = this.value;
+            ratioHighRiskCompliance = this.value / 100;
+            console.log(ratioHighRiskCompliance);
+            calculate();
+        }
+        var inputRatioHighRiskGroupCompliance = document.getElementById("inputRatioHighRiskGroupCompliance");
+        inputRatioHighRiskGroupCompliance.value = rangesliderRatioHighRiskGroupCompliance.value;
+        inputRatioHighRiskGroupCompliance.onchange = function () {
+            if (this.value < 0) this.value = 0;
+            if (this.value > 100) this.value = 100;
+            outputRatioHighRiskGroupCompliance.innerHTML = Intl.NumberFormat().format(this.value);
+            rangesliderRatioHighRiskGroupCompliance.value = this.value;
+            ratioHighRiskCompliance = Math.round(this.value) / 100;
+            calculate();
+        }
+
+        var rangesliderFactorUnregistered = document.getElementById("sliderFactorUnregistered");
+        var outputFactorUnregistered = document.getElementById("displayFactorUnregistered");
+        outputFactorUnregistered.innerHTML = rangesliderFactorUnregistered.value;
+        rangesliderFactorUnregistered.onchange = function () {
+            outputFactorUnregistered.innerHTML = this.value;
+            inputFactorUnregistered.value = this.value;
+            darkRatio = this.value;
+            calculate();
+        }
+        var inputFactorUnregistered = document.getElementById("inputFactorUnregistered");
+        inputFactorUnregistered.value = rangesliderFactorUnregistered.value;
+        inputFactorUnregistered.onchange = function () {
+            if (this.value < 0) this.value = 0;
+            if (this.value > 10) this.value = 10;
+            outputFactorUnregistered.innerHTML = Intl.NumberFormat().format(this.value);
+            rangesliderFactorUnregistered.value = this.value;
+            darkRatio = Math.round(this.value);
+            calculate();
+        }
+
+
+
+        var rangesliderUncertaintyModelParameters = document.getElementById("sliderUncertaintyModelParameters");
+        var outputUncertaintyModelParameters = document.getElementById("displayUncertaintyModelParameters");
+        outputUncertaintyModelParameters.innerHTML = rangesliderUncertaintyModelParameters.value;
+        rangesliderUncertaintyModelParameters.onchange = function () {
+            outputUncertaintyModelParameters.innerHTML = this.value;
+            inputUncertaintyModelParameters.value = this.value;
+            modelUncertainty = this.value / 100;
+            calculate();
+        }
+        var inputUncertaintyModelParameters = document.getElementById("inputUncertaintyModelParameters");
+        inputUncertaintyModelParameters.value = rangesliderUncertaintyModelParameters.value;
+        inputUncertaintyModelParameters.onchange = function () {
+            if (this.value < 0) this.value = 0;
+            if (this.value > 20) this.value = 20;
+            outputUncertaintyModelParameters.innerHTML = Intl.NumberFormat().format(this.value);
+            rangesliderUncertaintyModelParameters.value = this.value;
+            modelUncertainty = Math.round(this.value) / 100;
+            calculate();
+        }
+
+        var rangesliderUncertaintyAntibodyTest = document.getElementById("sliderUncertaintyAntibodyTest");
+        var outputUncertaintyAntibodyTest = document.getElementById("displayUncertaintyAntibodyTest");
+        outputUncertaintyAntibodyTest.innerHTML = rangesliderUncertaintyAntibodyTest.value;
+        rangesliderUncertaintyAntibodyTest.onchange = function () {
+            outputUncertaintyAntibodyTest.innerHTML = this.value;
+            inputUncertaintyAntibodyTest.value = this.value;
+            accuracyAntibodyTests = this.value / 100;
+            calculate();
+        }
+        var inputUncertaintyAntibodyTest = document.getElementById("inputUncertaintyAntibodyTest");
+        inputUncertaintyAntibodyTest.value = rangesliderUncertaintyAntibodyTest.value;
+        inputUncertaintyAntibodyTest.onchange = function () {
+            if (this.value < 0) this.value = 0;
+            if (this.value > 20) this.value = 20;
+            outputUncertaintyAntibodyTest.innerHTML = Intl.NumberFormat().format(this.value);
+            rangesliderUncertaintyAntibodyTest.value = this.value;
+            accuracyAntibodyTests = Math.round(this.value) / 100;
+            calculate();
+        }
+
+        var rangesliderUncertaintyRatio = document.getElementById("sliderUncertaintyRatio");
+        var outputUncertaintyRatio = document.getElementById("displayUncertaintyRatio");
+        outputUncertaintyRatio.innerHTML = rangesliderUncertaintyRatio.value;
+        rangesliderUncertaintyRatio.onchange = function () {
+            outputUncertaintyRatio.innerHTML = this.value;
+            inputUncertaintyRatio.value = this.value;
+            uncertaintyRatios = this.value / 100;
+            calculate();
+        }
+        var inputUncertaintyRatio = document.getElementById("inputUncertaintyRatio");
+        inputUncertaintyRatio.value = rangesliderUncertaintyRatio.value;
+        inputUncertaintyRatio.onchange = function () {
+            if (this.value < 0) this.value = 0;
+            if (this.value > 20) this.value = 20;
+            outputUncertaintyRatio.innerHTML = Intl.NumberFormat().format(this.value);
+            rangesliderUncertaintyRatio.value = this.value;
+            uncertaintyRatios = Math.round(this.value) / 100;
+            calculate();
+        }
+
+        var rangesliderDelayTime = document.getElementById("sliderDelayTime");
+        var outputDelayTime = document.getElementById("displayDelayTime");
+        outputDelayTime.innerHTML = rangesliderDelayTime.value;
+        rangesliderDelayTime.onchange = function () {
+            outputDelayTime.innerHTML = this.value;
+            inputDelayTime.value = this.value;
+            delay = Math.round(this.value);
+            calculate();
+        }
+        var inputDelayTime = document.getElementById("inputDelayTime");
+        inputDelayTime.value = rangesliderDelayTime.value;
+        inputDelayTime.onchange = function () {
+            if (this.value < 0) this.value = 0;
+            if (this.value > 30) this.value = 30;
+            outputDelayTime.innerHTML = Intl.NumberFormat().format(this.value);
+            rangesliderDelayTime.value = this.value;
+            delay = Math.round(this.value);
+            calculate();
+        }
+
+
+        var rangesliderCapacity = document.getElementById("sliderCapacity");
+        var outputCapacity = document.getElementById("displayCapacity");
+        outputCapacity.innerHTML = Intl.NumberFormat().format(rangesliderCapacity.value);
+        rangesliderCapacity.onchange = function () {
+            outputCapacity.innerHTML = Intl.NumberFormat().format(this.value);
+            inputCapacity.value = this.value;
+            ICUcapacity = Math.round(this.value);
+            calculate();
+        }
+        var inputCapacity = document.getElementById("inputCapacity");
+        inputCapacity.value = rangesliderCapacity.value;
+        inputCapacity.onchange = function () {
+            if (this.value < 0) this.value = 0;
+            if (this.value > 50000) this.value = 50000;
+            outputCapacity.innerHTML = Intl.NumberFormat().format(this.value);
+            rangesliderCapacity.value = this.value;
+            ICUcapacity = Math.round(this.value);
+            calculate();
+        }
+
+        var rangesliderCapacityIncrease = document.getElementById("sliderCapacityIncrease");
+        var outputCapacityIncrease = document.getElementById("displayCapacityIncrease");
+        outputCapacityIncrease.innerHTML = rangesliderCapacityIncrease.value;
+        rangesliderCapacityIncrease.onchange = function () {
+            outputCapacityIncrease.innerHTML = this.value;
+            inputCapacityIncrease.value = this.value;
+            addCapacity = this.value;
+            calculate();
+        }
+        var inputCapacityIncrease = document.getElementById("inputCapacityIncrease");
+        inputCapacityIncrease.value = rangesliderCapacityIncrease.value;
+        inputCapacityIncrease.onchange = function () {
+            if (this.value < 0) this.value = 0;
+            if (this.value > 500) this.value = 500;
+            outputCapacityIncrease.innerHTML = Intl.NumberFormat().format(this.value);
+            rangesliderCapacityIncrease.value = this.value;
+            addCapacity = Math.round(this.value);
+            calculate();
+        }
+
+        var rangesliderUncertaintyInteraction = document.getElementById("sliderUncertaintyInteraction");
+        var outputUncertaintyInteraction = document.getElementById("displayUncertaintyInteraction");
+        outputUncertaintyInteraction.innerHTML = rangesliderUncertaintyInteraction.value;
+        rangesliderUncertaintyInteraction.onchange = function () {
+            outputUncertaintyInteraction.innerHTML = this.value;
+            inputUncertaintyInteraction.value = this.value;
+            uInaccur = this.value / 100;
+            calculate();
+        }
+        var inputUncertaintyInteraction = document.getElementById("inputUncertaintyInteraction");
+        inputUncertaintyInteraction.value = rangesliderUncertaintyInteraction.value;
+        inputUncertaintyInteraction.onchange = function () {
+            if (this.value < 0) this.value = 0;
+            if (this.value > 10) this.value = 10;
+            outputUncertaintyInteraction.innerHTML = Intl.NumberFormat().format(this.value);
+            rangesliderUncertaintyInteraction.value = this.value;
+            uInaccur = Math.round(this.value) / 100;
+            calculate();
+        }
+
+
+        var rangesliderLowerLevel = document.getElementById("sliderLowerLevel");
+        var outputLowerLevel = document.getElementById("displayLowerLevel");
+        outputLowerLevel.innerHTML = rangesliderLowerLevel.value;
+        rangesliderLowerLevel.onchange = function () {
+            outputLowerLevel.innerHTML = this.value;
+            inputLowerLevel.value = this.value;
+            lowerLevel = this.value / 100;
+            calculate();
+        }
+        var inputLowerLevel = document.getElementById("inputLowerLevel");
+        inputLowerLevel.value = rangesliderLowerLevel.value;
+        inputLowerLevel.onchange = function () {
+            if (this.value < 0) this.value = 0;
+            if (this.value > 100) this.value = 100;
+            outputLowerLevel.innerHTML = Intl.NumberFormat().format(this.value);
+            rangesliderLowerLevel.value = this.value;
+            lowerLevel = Math.round(this.value) / 100;
+            calculate();
+        }
+
+        var rangesliderHigherLevel = document.getElementById("sliderHigherLevel");
+        var outputHigherLevel = document.getElementById("displayHigherLevel");
+        outputHigherLevel.innerHTML = rangesliderHigherLevel.value;
+        rangesliderHigherLevel.onchange = function () {
+            outputHigherLevel.innerHTML = this.value;
+            inputHigherLevel.value = this.value;
+            upperLevel = this.value / 100;
+            calculate();
+        }
+        var inputHigherLevel = document.getElementById("inputHigherLevel");
+        inputHigherLevel.value = rangesliderHigherLevel.value;
+        inputHigherLevel.onchange = function () {
+            if (this.value < 0) this.value = 0;
+            if (this.value > 100) this.value = 100;
+            outputHigherLevel.innerHTML = Intl.NumberFormat().format(this.value);
+            rangesliderHigherLevel.value = this.value;
+            upperLevel = Math.round(this.value) / 100;
+            calculate();
+        }
+
+        var rangesliderEndDate = document.getElementById("sliderEndDate");
+        var outputEndDate = document.getElementById("displayEndDate");
+        outputEndDate.innerHTML = rangesliderEndDate.value;
+        rangesliderEndDate.onchange = function () {
+            if (this.value > T - 1) this.value = T - 1;
+            outputEndDate.innerHTML = this.value;
+            inputEndDate.value = this.value;
+            endDate = Math.round(this.value);
+            calculate();
+        }
+        var inputEndDate = document.getElementById("inputEndDate");
+        inputEndDate.value = rangesliderEndDate.value;
+        inputEndDate.onchange = function () {
+            if (this.value < 0) this.value = 0;
+            if (this.value > T - 1) this.value = T - 1;
+            outputEndDate.innerHTML = Intl.NumberFormat().format(this.value);
+            rangesliderEndDate.value = this.value;
+            endDate = Math.round(this.value) / 100;
+            calculate();
+        }
+
+        var rangesliderInteractionAfterEndDate = document.getElementById("sliderInteractionAfterEndDate");
+        var outputInteractionAfterEndDate = document.getElementById("displayInteractionAfterEndDate");
+        outputInteractionAfterEndDate.innerHTML = rangesliderInteractionAfterEndDate.value;
+        rangesliderInteractionAfterEndDate.onchange = function () {
+            outputInteractionAfterEndDate.innerHTML = this.value;
+            inputInteractionAfterEndDate.value = this.value;
+            finalLevel = this.value / 100;
+            calculate();
+        }
+        var inputInteractionAfterEndDate = document.getElementById("inputInteractionAfterEndDate");
+        inputInteractionAfterEndDate.value = rangesliderInteractionAfterEndDate.value;
+        inputInteractionAfterEndDate.onchange = function () {
+            if (this.value < 0) this.value = 0;
+            if (this.value > 100) this.value = 100;
+            outputInteractionAfterEndDate.innerHTML = Intl.NumberFormat().format(this.value);
+            rangesliderInteractionAfterEndDate.value = this.value;
+            finalLevel = Math.round(this.value) / 100;
+            calculate();
+        }
+
+        var rangesliderSimulations = document.getElementById("sliderSimulations");
+        var outputSimulations = document.getElementById("displaySimulations");
+        outputSimulations.innerHTML = rangesliderSimulations.value;
+        rangesliderSimulations.onchange = function () {
+            outputSimulations.innerHTML = this.value;
+            inputsliderSimulations.value = this.value;
+            numberCycles = this.value;
+            calculate();
+        }
+        var inputSimulations = document.getElementById("inputSimulations");
+        inputSimulations.value = rangesliderSimulations.value;
+        inputSimulations.onchange = function () {
+            if (this.value < 0) this.value = 0;
+            if (this.value > 100) this.value = 100;
+            outputsliderSimulations.innerHTML = Intl.NumberFormat().format(this.value);
+            rangesliderSimulations.value = this.value;
+            numberCycles = Math.round(this.value);
+            calculate();
+        }
+
+        var rangesliderDuration = document.getElementById("sliderDuration");
+        var outputDuration = document.getElementById("displayDuration");
+        outputDuration.innerHTML = rangesliderDuration.value;
+        rangesliderDuration.onchange = function () {
+            outputDuration.innerHTML = this.value;
+            inputDuration.value = this.value;
+            T = Math.round(this.value);
+            // check an potentiall correct end date
+            if (T - 1 < endDate) {
+
+                rangesliderEndDate.value = T - 2;
+                outputEndDate.innerHTML = T - 2;
+                inputEndDate.value = T - 2;
+                endDate = T - 2;
+            }
+            calculate();
+        }
+        var inputDuration = document.getElementById("inputDuration");
+        inputDuration.value = rangesliderDuration.value;
+        inputDuration.onchange = function () {
+            if (this.value < 0) this.value = 0;
+            if (this.value > 730) this.value = 730;
+            outputDuration.innerHTML = Intl.NumberFormat().format(this.value);
+            rangesliderDuration.value = this.value;
+            T = Math.round(this.value);
+            // check an potentiall correct end date
+            if (T - 1 < endDate) {
+
+                rangesliderEndDate.value = T - 2;
+                outputEndDate.innerHTML = T - 2;
+                inputEndDate.value = T - 2;
+                endDate = T - 2;
+            }
+            calculate();
+        }
+
+        // determine results
+        calculate();
+
+    </script>
 </body>
 </html>
