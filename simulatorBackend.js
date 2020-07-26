@@ -1,4 +1,11 @@
-﻿function calculate() {
+﻿var viewData1 = [];
+var viewData2 = [];
+var viewData3 = [];
+var viewData4 = [];
+var viewData5 = [];
+var startLevelAlwaysReached;
+
+function calculate() {
 
     // variable definition
 
@@ -9,26 +16,6 @@
     var startLevelAlwaysReached;
     var iStartLevelReached;
     var redPopOnly;
-
-    var titles = [];
-    var graphAnnotations = [];
-    var seriesLabels = [];
-
-    var simData = [];
-
-    for (i = 0; i < 730 + 1; i++) {
-        simData[i] = [];
-    }
-
-    for (i = 0; i < 4; i++) {
-        titles[i] = [];
-    }
-    for (i = 0; i < 6; i++) {
-        graphAnnotations[i] = [];
-    }
-    for (i = 0; i < 10; i++) {
-        seriesLabels[i] = [];
-    }
 
 
     // initialize simulation data
@@ -387,7 +374,7 @@
     }
 
     // extract data for overview
-    var viewData1 = [];
+    //var viewData1 = [];
     for (i = 0; i < T + 1; i++) {
         viewData1[i] = [];
     }
@@ -398,7 +385,7 @@
     }
 
     // extract data for overview
-    var viewData2 = [];
+    //var viewData2 = [];
     for (i = 0; i < T + 1; i++) {
         viewData2[i] = [];
     }
@@ -416,7 +403,7 @@
         }
     }
 
-    var viewData3 = [];
+    //var viewData3 = [];
     for (i = 0; i < T + 1; i++) {
         viewData3[i] = [];
     }
@@ -432,7 +419,7 @@
         }
     }
 
-    var viewData4 = [];
+    //var viewData4 = [];
     for (i = 0; i < T + 1; i++) {
         viewData4[i] = [];
     }
@@ -450,7 +437,7 @@
 
 
     // gather data for evaluation of economic impact
-    var viewData5 = [];
+    //var viewData5 = [];
     for (i = 0; i < T + 1; i++) {
         viewData5[i] = [];
     }
@@ -468,8 +455,15 @@
 
     google.charts.load('current', { 'packages': ['corechart'] });
     google.charts.setOnLoadCallback(drawChart);
+}
+
+
+
+
 
     function drawChart() {
+
+
 
         var data = google.visualization.arrayToDataTable(viewData1);
 
@@ -609,4 +603,3 @@
         var chart4 = new google.visualization.ComboChart(document.getElementById('curve_chart_4'));
         chart4.draw(data4, options4);
     }
-}
